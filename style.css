@@ -1,0 +1,330 @@
+:root {
+    /* color */
+    --colorCharacter: #000000;
+    --colorSubText: #8b949e;
+    --colorHeaderBackground: linear-gradient(135deg, #1f6feb 0%, #8957e5 100%);
+    --colorPageBackground: #dddddd;
+    --colorCardBackground: #c5c5c5;
+    --colorCardBorder: #30363d;
+    --colorHoveredCardBorder: #1f6feb;
+    --colorButtonBackground: #30363d;
+    --colorButtonHoverBackground: #1a5bcb;
+    --imageBorderColor: #1f6feb;
+
+    /* size */
+    --cardWidth: 350px;
+    --cardWidthMobile: 280px;
+    --profileMaxWidth: 1200px;
+    --containerMaxWidth: 1400px;
+    --profileImageWidth: 300px;
+    --profileImageWidthMobile: 200px;
+    --profileTextWidth: 600px;
+
+    --cardBorderWidth: 1px;
+    --imageBorderWidth: 4px;
+    --cardBorderRadius: 12px;
+
+
+    /* spacing */
+    --headerPadding: 60px 20px;
+    --titlePadding: 180px;
+    --contentPadding: 60px;
+    --cardPadding: 20px;
+    --cardGap: 30px;
+
+    --listPadding: 12px 0;
+    --listTextPadding: 20px;
+
+    /* font */
+    --fontFamily: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --fontSizeText: 1rem;
+    --fontSizeTitle: 2rem;
+    --fontSizeSubtitle: 1.5rem;
+    --fontSizeHeader: 3rem;
+    --fontSizeSubText: 0.9rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--fontFamily);
+    background: var(--colorPageBackground);
+    color: var(--colorCharacter);
+}
+
+header {
+    text-align: center;
+    padding: var(--headerPadding);
+    background: var(--colorHeaderBackground);
+    margin-bottom: var(--titlePadding);
+}
+
+h1 {
+    font-size: var(--fontSizeHeader);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: var(--fontSizeTitle);
+}
+
+h3 {
+    text-align: left;
+    margin-bottom: 20px;
+    font-size: var(--fontSizeSubtitle);
+}
+
+.title-about-me {
+    padding-bottom: var(--contentPadding);
+    margin-bottom: 40px;
+}
+
+.about-me {
+    max-width: var(--profileMaxWidth);
+    margin: 0 auto;
+    padding: var(--cardPadding);
+    border: var(--cardBorderWidth) solid var(--colorCardBorder);
+    border-radius: var(--cardBorderRadius);
+    background: var(--colorCardBackground);
+}
+
+.about-me-content {
+    display: flex;
+    gap: var(--cardGap);
+    align-items: center;
+}
+
+.profile-image {
+    flex: 0 0 var(--profileImageWidth);
+}
+
+.profile-image img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--cardBorderRadius);
+    border: var(--imageBorderWidth) solid var(--imageBorderColor);
+    box-shadow: 0 8px 30px rgba(31, 111, 235, 0.3);
+}
+
+.skills {
+    flex: 1;
+    padding: var(--cardPadding);
+    text-align: left;
+}
+
+.skills ul {
+    list-style: disc;
+    text-align: left;
+    max-width: var(--profileTextWidth);
+    margin: 0 auto;
+}
+
+.skills ul li {
+    margin: var(--listPadding);
+    padding-left: var(--listTextPadding);
+    position: relative;
+}
+
+@media (max-width: 768px) {
+    .about-me-content {
+        flex-direction: column;
+    }
+
+    .profile-image {
+        flex: 0 0 auto;
+        width: var(--profileImageWidthMobile);
+        margin: 0 auto;
+    }
+}
+
+.projects {
+    padding-top: var(--titlePadding);
+    overflow: hidden;
+}
+
+/* カルーセル全体 */
+.carousel-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: var(--cardGap);
+    max-width: var(--containerMaxWidth);
+    margin: 0 auto;
+}
+
+.carousel-container {
+    overflow: hidden;
+    flex: 1;
+    position: relative;
+    padding: var(--contentPadding) 0;
+}
+
+.carousel {
+    display: flex;
+    gap: var(--cardGap);
+    transition: transform 0.6s ease;
+    justify-content: flex-start; /* 追加 */
+}
+
+/* 矢印ボタン */
+.carousel-btn {
+    background: gray;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    color: white;
+    flex-shrink: 0;
+    z-index: 10;
+}
+
+.carousel-btn:hover {
+    background: #1a5bcb;
+    transform: scale(1.1);
+}
+
+.carousel-btn:active {
+    transform: scale(0.95);
+}
+
+/* プロジェクトカード */
+.project-card {
+    min-width: 350px;
+    min-height: 300px;
+    background: var(--colorCardBackground);
+    border: 1px solid var(--colorCardBorder);
+    border-radius: var(--cardBorderRadius);
+    padding: var(--cardPadding);
+    transition: transform 0.3s, box-shadow 0.3s;
+    flex-shrink: 0;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 30px rgba(31, 111, 235, 0.3);
+    border: 3px solid var(--colorHoveredCardBorder);
+}
+
+.project-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: var(--cardBorderRadius);
+    margin-bottom: var(--cardMarginBottom);
+    background: var(--colorCardBackground);
+}
+
+.project-card h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: var(--colorTitle);
+}
+
+.project-card p {
+    margin-bottom: 10px;
+}
+
+.project-card ul {
+    list-style: none;
+    margin: 15px 0;
+}
+
+.project-card ul li {
+    margin: 5px 0;
+}
+
+.project-card ul li:before {
+    content: "? ";
+    color: #1f6feb;
+    font-weight: bold;
+}
+
+.project-card-link {
+    text-decoration: none; /* 下線を消す */
+    color: inherit; /* 親要素の色を継承（青色にならない） */
+    display: block;
+    flex-shrink: 0;
+}
+
+.project-card-link:hover {
+    text-decoration: none; /* ホバー時も下線を消す */
+}
+
+/* さらに確実にするなら */
+.project-card-link * {
+    text-decoration: none; /* すべての子要素の下線を消す */
+}
+
+.tech {
+    color: var(--colorSubText);
+    font-size: var(--fontSizeSubText);
+    margin: 15px 0;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: var(--colorButtonBackground);
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background: var(--colorButtonHoverBackground);
+}
+
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    background: #161b22;
+    border-top: 1px solid #30363d;
+}
+
+footer p {
+    color: var(--colorSubText);
+    font-size: var(--fontSizeSubText);
+}
+
+/* レスポンシブ */
+@media (max-width: 768px) {
+    .project-card {
+        min-width: 280px;
+    }
+    
+    header h1 {
+        font-size: 2em;
+    }
+    
+    .carousel-wrapper {
+        gap: 0;
+    }
+    
+    .carousel-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 40px;
+        height: 40px;
+        background: rgba(31, 111, 235, 0.9);
+    }
+    
+    .carousel-btn.prev {
+        left: 10px;
+    }
+    
+    .carousel-btn.next {
+        right: 10px;
+    }
+}
