@@ -1,0 +1,73 @@
+:root {
+    /* color */
+    --colorCharacter: #000000;
+    --colorPageBackground: #dddddd;
+
+    /* size */
+    --headerPadding: 60px 20px;
+    --headerMarginBottom: 180px;
+
+    --projectTitleMargin: 0px 40px;
+    --projectOverviewPadding: 0 40px;
+    --contentPadding: 0 40px;
+    --contentMargin: 0 auto 100px auto;
+    --contentMaxWidth: 1000px;
+
+    --titleMarginBottom: 1.5em;
+    --textLineHeight: 2;
+
+    /* font */
+    --fontFamily: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --fontSizeText: 1rem;
+    --fontSizeTitle: 2rem;
+    --fontSizeSubtitle: 1.5rem;
+    --fontSizeHeader: 3rem;
+    --fontSizeSubText: 0.9rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1 {
+    font-size: var(--fontSizeHeader);
+}
+h2 {
+    font-size: var(--fontSizeTitle);
+    margin-block-end: var(--titleMarginBottom);
+}
+h3 {
+    font-size: var(--fontSizeSubtitle);
+}
+p {
+    font-size: var(--fontSizeText);
+    line-height: var(--textLineHeight);
+}
+li {
+    font-size: var(--fontSizeText);
+}
+
+body {
+    font-family: var(--fontFamily);
+}
+
+header {
+    text-align: center;
+    padding: var(--headerPadding);
+    background: var(--colorPageBackground);
+    margin-bottom: var(--headerMarginBottom);
+}
+
+.content {
+    max-width: var(--contentMaxWidth);
+    margin: var(--contentMargin); /* upper right lower left */
+}
+
+
+.project-title {
+    text-align: center;
+    margin: var(--projectTitleMargin);
+    padding: var(--contentPadding);
+}

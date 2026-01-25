@@ -41,7 +41,7 @@
         projects: [
         {
             title: "OtokawaEngine",
-            pageLink: "projects/OtokawaEngine.html",
+            pageLink: "projects/OtokawaEngine/OtokawaEngine.html",
             cardThumbnail: images.OtokawaEngineCard,
             detail: "DirectX11ベースのカスタムゲームエンジン",
             features: [
