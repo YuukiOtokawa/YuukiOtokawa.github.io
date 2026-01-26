@@ -87,6 +87,38 @@ header {
     padding: var(--contentPadding);
 }
 
+.table-of-contents {
+    max-width: var(--contentMaxWidth);
+    margin: var(--contentMargin);
+    padding: 20px 40px;
+    background: var(--colorPageBackground);
+    border-radius: 8px;
+}
+
+.table-of-contents h2 {
+    margin-block-end: 0.8em;
+}
+
+.table-of-contents ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.table-of-contents li {
+    margin-bottom: 0.5em;
+}
+
+.table-of-contents a {
+    color: var(--colorCharacter);
+    text-decoration: none;
+    font-size: var(--fontSizeText);
+    transition: color 0.2s;
+}
+
+.table-of-contents a:hover {
+    color: #0066cc;
+    text-decoration: underline;
+
 .back-button {
     position: fixed;
     bottom: 30px;
