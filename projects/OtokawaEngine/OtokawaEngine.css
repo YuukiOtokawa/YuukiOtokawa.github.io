@@ -4,6 +4,7 @@
     --colorPageBackground: #dddddd;
 
     /* size */
+    --pagePadding: 20px;
     --headerPadding: 60px 20px;
     --headerMarginBottom: 180px;
 
@@ -56,6 +57,7 @@ li {
 
 body {
     font-family: var(--fontFamily);
+    padding: 0 var(--pagePadding);
 }
 
 header {

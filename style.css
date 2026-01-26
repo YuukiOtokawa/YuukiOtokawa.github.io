@@ -26,6 +26,7 @@
 
 
     /* spacing */
+    --pagePadding: 20px;
     --headerPadding: 60px 20px;
     --titlePadding: 180px;
     --contentPadding: 60px;
@@ -54,6 +55,7 @@ body {
     font-family: var(--fontFamily);
     background: var(--colorPageBackground);
     color: var(--colorCharacter);
+    padding: 0 var(--pagePadding);
 }
 
 header {
