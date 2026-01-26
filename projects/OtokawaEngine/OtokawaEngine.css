@@ -12,6 +12,7 @@
     --projectOverviewPadding: 0 40px;
     --contentPadding: 0 40px;
     --contentMargin: 0 auto 100px auto;
+    --cardMaxWidth: 800px;
     --contentMaxWidth: 1000px;
 
     --referenceMargin: 0 auto 50px auto;
@@ -92,7 +93,7 @@ header {
 }
 
 .table-of-contents {
-    max-width: var(--contentMaxWidth);
+    max-width: var(--cardMaxWidth);
     margin: var(--contentMargin);
     padding: 20px 40px;
     background: var(--colorPageBackground);
