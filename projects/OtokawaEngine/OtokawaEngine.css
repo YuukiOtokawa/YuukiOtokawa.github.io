@@ -118,6 +118,7 @@ header {
 .table-of-contents a:hover {
     color: #0066cc;
     text-decoration: underline;
+}
 
 .back-button {
     position: fixed;
