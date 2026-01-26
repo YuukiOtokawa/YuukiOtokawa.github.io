@@ -4,6 +4,7 @@
     --colorPageBackground: #dddddd;
 
     /* size */
+    --pagePadding: 20px;
     --headerPadding: 60px 20px;
     --headerMarginBottom: 180px;
 
@@ -11,6 +12,7 @@
     --projectOverviewPadding: 0 40px;
     --contentPadding: 0 40px;
     --contentMargin: 0 auto 100px auto;
+    --cardMaxWidth: 800px;
     --contentMaxWidth: 1000px;
 
     --referenceMargin: 0 auto 50px auto;
@@ -56,6 +58,7 @@ li {
 
 body {
     font-family: var(--fontFamily);
+    padding: 0 var(--pagePadding);
 }
 
 header {
@@ -63,6 +66,8 @@ header {
     padding: var(--headerPadding);
     background: var(--colorPageBackground);
     margin-bottom: var(--headerMarginBottom);
+    margin-left: calc(-1 * var(--pagePadding));
+    margin-right: calc(-1 * var(--pagePadding));
 }
 
 .content {
@@ -88,7 +93,7 @@ header {
 }
 
 .table-of-contents {
-    max-width: var(--contentMaxWidth);
+    max-width: var(--cardMaxWidth);
     margin: var(--contentMargin);
     padding: 20px 40px;
     background: var(--colorPageBackground);
@@ -119,7 +124,6 @@ header {
     color: #0066cc;
     text-decoration: underline;
 }
-
 .back-button {
     position: fixed;
     bottom: 30px;
