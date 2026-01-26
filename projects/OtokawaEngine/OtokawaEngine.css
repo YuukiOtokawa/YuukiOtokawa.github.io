@@ -65,6 +65,8 @@ header {
     padding: var(--headerPadding);
     background: var(--colorPageBackground);
     margin-bottom: var(--headerMarginBottom);
+    margin-left: calc(-1 * var(--pagePadding));
+    margin-right: calc(-1 * var(--pagePadding));
 }
 
 .content {
