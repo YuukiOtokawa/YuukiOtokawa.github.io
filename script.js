@@ -63,31 +63,17 @@ function initializeProfile() {
 // #region carouselAnimation
 
 function setupCarouselAnimation() {
-    const parameter = document.querySelector(':root');
-
     const carousel = document.querySelector('.carousel');
     const carouselContainer = document.querySelector('.carousel-container');
-    const cards = document.querySelectorAll('.project-card');
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
 
-    if (!carousel || cards.length === 0) return;
+    if (!carousel || carousel.children.length === 0) return;
 
-    const rootStyles = getComputedStyle(document.documentElement);
-    const cardGapValue = rootStyles.getPropertyValue('--cardGap').trim();
-    const cardGap = parseInt(cardGapValue); // カード間のギャップ
-
-    const cardWidth = cards[0].offsetWidth + cardGap; // カードの幅＋マージン
     const realCards = projectCardData.projects.length; // 実際のカード数
     let currentIndex = realCards; // オリジナルの最初のカード（index=realCards）
     let isAnimating = false;
     let autoScrollInterval;
-
-    function getOffset() {
-        const containerWidth = carouselContainer.offsetWidth;
-        const cardActualWidth = cards[0].offsetWidth;
-        return (containerWidth - cardActualWidth) / 2;
-    }
 
     function moveToIndex(index, withAnimation = true) {
         if (isAnimating && withAnimation) return;
@@ -95,8 +81,11 @@ function setupCarouselAnimation() {
         isAnimating = true;
 
         carousel.style.transition = withAnimation ? 'transform 0.6s ease' : 'none';
-        const offset = getOffset();
-        const translateX = -(index * cardWidth) + offset;
+
+        const targetItem = carousel.children[index];
+        const containerWidth = carouselContainer.offsetWidth;
+        const offset = (containerWidth - targetItem.offsetWidth) / 2;
+        const translateX = -(targetItem.offsetLeft) + offset;
         carousel.style.transform = `translateX(${translateX}px)`;
 
         setTimeout(() => {
