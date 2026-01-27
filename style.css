@@ -90,11 +90,12 @@ h3 {
 
 .about-me {
     max-width: var(--profileMaxWidth);
-    margin: 0 auto;
+    margin: var(--contentPadding) auto;
     padding: var(--cardPadding);
     border: var(--cardBorderWidth) solid var(--colorCardBorder);
     border-radius: var(--cardBorderRadius);
     background: var(--colorCardBackground);
+    
 }
 
 .about-me-content {
@@ -147,7 +148,7 @@ h3 {
 }
 
 .projects {
-    padding-top: var(--titlePadding);
+    padding-bottom: var(--titlePadding);
     overflow: hidden;
 }
 
