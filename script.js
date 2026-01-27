@@ -20,9 +20,6 @@ function createProjectCard(project) {
                 <ul>
                     ${project.features.map(feature => `<li>${feature}</li>`).join('')}
                 </ul>
-                <p class="tech">${project.tech}</p>
-                <p class="repository">Repository</p>
-                <p class="repo-link">${project.Repository ? `<a href="${project.Repository}" target="_blank">GitHub Repository</a>` : 'No repository available'}</p>
             </div>
         </div>
     </a>
