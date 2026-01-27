@@ -13,16 +13,17 @@ const nextBtn = document.getElementById('nextBtn');
 function createProjectCard(project) {
     return `
     <a href="${project.pageLink}" class="project-card-link">
-        <div class="project-card">
-            <img src="${project.cardThumbnail}" alt="${project.title}">
-            <h3>${project.title}</h3>
-            <p>${project.detail}</p>
-            <ul>
-                ${project.features.map(feature => `<li>${feature}</li>`).join('')}
-            </ul>
-            <p class="tech">${project.tech}</p>
-            <p class="repository">Repository</p>
-            <p class="repo-link">${project.Repository ? `<a href="${project.Repository}" target="_blank">GitHub Repository</a>` : 'No repository available'}</p>
+        <div class="project-card" style="background-image: url('${project.cardThumbnail}');">
+            <div class="project-card-content">
+                <h3>${project.title}</h3>
+                <p>${project.detail}</p>
+                <ul>
+                    ${project.features.map(feature => `<li>${feature}</li>`).join('')}
+                </ul>
+                <p class="tech">${project.tech}</p>
+                <p class="repository">Repository</p>
+                <p class="repo-link">${project.Repository ? `<a href="${project.Repository}" target="_blank">GitHub Repository</a>` : 'No repository available'}</p>
+            </div>
         </div>
     </a>
     `;

@@ -206,12 +206,25 @@ h3 {
 .project-card {
     min-width: 350px;
     min-height: 300px;
-    background: var(--colorCardBackground);
+    background-color: var(--colorCardBackground);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     border: 1px solid var(--colorCardBorder);
     border-radius: var(--cardBorderRadius);
-    padding: var(--cardPadding);
+    padding: 0;
     transition: transform 0.3s, box-shadow 0.3s;
     flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-card-content {
+    padding: var(--cardPadding);
+    background: rgba(0, 0, 0, 0.65);
+    min-height: 100%;
+    color: #ffffff;
+    border-radius: var(--cardBorderRadius);
 }
 
 .project-card:hover {
@@ -220,14 +233,6 @@ h3 {
     border: 3px solid var(--colorHoveredCardBorder);
 }
 
-.project-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: var(--cardBorderRadius);
-    margin-bottom: var(--cardMarginBottom);
-    background: var(--colorCardBackground);
-}
 
 .project-card h3 {
     font-size: 1.5em;
