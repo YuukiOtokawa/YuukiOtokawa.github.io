@@ -1,51 +1,51 @@
 
-    const contentProperty = {
-        character: "#000000",
-        background: "#aaaaaa",
-        cardWidth: "350px",
-        cardBackground: "#dddddd",
-        cardBorder: "1px solid #30363d",
-        cardBorderRadius: "12px",
-        hoveredCardBorder: "3px solid #1f6feb",
+const contentProperty = {
+    character: "#000000",
+    background: "#aaaaaa",
+    cardWidth: "350px",
+    cardBackground: "#dddddd",
+    cardBorder: "1px solid #30363d",
+    cardBorderRadius: "12px",
+    hoveredCardBorder: "3px solid #1f6feb",
 
-        h1FontSize: "3em",
-        h2FontSize: "2.5em",
-        h3FontSize: "1.5em",
+    h1FontSize: "3em",
+    h2FontSize: "2.5em",
+    h3FontSize: "1.5em",
 
-    }
+}
 
-    const images = {
-        ProfileImage: "assets/profile-image.jpg",
-        OtokawaEngineCard: "assets/ThisIsPicture.png",
-        Project2Card: "assets/ThisIsPicture.png",
-        Project3Card: "assets/ThisIsPicture.png",
-    }
+const images = {
+    ProfileImage: "assets/profile-image.jpg",
+    OtokawaEngineCard: "assets/ProjectCard/EngineThumbnail.png",
+    Project2Card: "assets/ThisIsPicture.png",
+    Project3Card: "assets/ThisIsPicture.png",
+}
 
-    const links = {
-        OtokawaEngineDetail: "projects/OtokawaEngine.html",
-        OtokawaEngineRepo: "",
-        GitHub: "",
-        Email: "yuukiotokawa.2002@gmail.com",
+const links = {
+    OtokawaEngineDetail: "projects/OtokawaEngine.html",
+    OtokawaEngineRepo: "",
+    GitHub: "",
+    Email: "yuukiotokawa.2002@gmail.com",
 
-    }
+}
 
-    const profile = {
-        name: "音川 優樹",
-        at: "HAL東京 昼間部4年制課程 ゲーム4年制学科 ゲーム製作コース",
-        lang: "プログラミング言語: C, C++, C#",
-        engine: "ゲームエンジン: Unity, Unreal Engine",
-        tool: "ツール: Git",
-    }
+const profile = {
+    name: "音川 優樹",
+    at: "HAL東京 昼間部4年制課程 ゲーム4年制学科 ゲーム製作コース",
+    lang: "プログラミング言語: C, C++, C#",
+    engine: "ゲームエンジン: Unity, Unreal Engine",
+    tool: "ツール: Git",
+}
 
-    const projectCardData = {
-        projects: [
+const projectCardData = {
+    projects: [
         {
             title: "OtokawaEngine",
             pageLink: "projects/OtokawaEngine/OtokawaEngine.html",
             cardThumbnail: images.OtokawaEngineCard,
             detail: "DirectX11ベースのカスタムゲームエンジン",
             features: [
-                "ゲームエンジン製作",
+                "ゲームエンジン",
                 "プログラム",
                 "C++",
                 "DirectX11",
@@ -55,13 +55,13 @@
             title: "祓魔犬",
             pageLink: "#",
             cardThumbnail: images.Project2Card,
-            detail: "2年の進級制作で制作した2Dアクションゲーム",
+            detail: "2年の進級制作で制作し�?2Dアクションゲー�?",
             features: [
                 "チーム制作",
                 "進行管理",
                 "プログラム",
-                "DirectX11",
                 "C++",
+                "DirectX11",
             ],
         },
         {
@@ -76,13 +76,13 @@
             ],
         },
         {
-            title: "ハコポス！！！",
+            title: "ハコポス!!!",
             pageLink: "#",
             cardThumbnail: images.Project3Card,
             detail: "2年にチームを組んで制作した落ちものパズルゲーム",
             features: [
                 "チーム制作",
-                "リポジトリ管理(GitHub",
+                "リポジトリ管理(GitHub)",
                 "Unity",
             ],
         },
@@ -94,11 +94,12 @@
             features: [
                 "チーム制作",
                 "プログラム",
-                "データ管理",
+                "リポジトリ管理(GitHub)",
                 "Unity",
             ],
         },
 
-    ]}
+    ]
+}
 
 

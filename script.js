@@ -73,21 +73,19 @@ function setupCarouselAnimation() {
 
     if (!carousel || cards.length === 0) return;
 
-    const rootStyles = getComputedStyle(document.documentElement);
-    const cardGapValue = rootStyles.getPropertyValue('--cardGap').trim();
-    const cardGap = parseInt(cardGapValue); // カード間のギャップ
-
-    const cardWidth = cards[0].offsetWidth + cardGap; // カードの幅＋マージン
     const realCards = projectCardData.projects.length; // 実際のカード数
+
+    // cardWidthを動的に取得する関数
+    function getCardWidth() {
+        const rootStyles = getComputedStyle(document.documentElement);
+        const cardGapValue = rootStyles.getPropertyValue('--cardGap').trim();
+        const cardGap = parseInt(cardGapValue);
+        return cards[0].offsetWidth + cardGap;
+    }
+
     let currentIndex = realCards; // オリジナルの最初のカード（index=realCards）
     let isAnimating = false;
     let autoScrollInterval;
-
-    function getOffset() {
-        const containerWidth = carouselContainer.offsetWidth;
-        const cardActualWidth = cards[0].offsetWidth;
-        return (containerWidth - cardActualWidth) / 2;
-    }
 
     function moveToIndex(index, withAnimation = true) {
         if (isAnimating && withAnimation) return;
@@ -95,7 +93,11 @@ function setupCarouselAnimation() {
         isAnimating = true;
 
         carousel.style.transition = withAnimation ? 'transform 0.6s ease' : 'none';
-        const offset = getOffset();
+        // 毎回最新の値を取得
+        const cardWidth = getCardWidth();
+        const containerWidth = carouselContainer.offsetWidth;
+        const cardActualWidth = cards[0].offsetWidth;
+        const offset = (containerWidth - cardActualWidth) / 2;
         const translateX = -(index * cardWidth) + offset;
         carousel.style.transform = `translateX(${translateX}px)`;
 
@@ -175,10 +177,102 @@ function setupCarouselAnimation() {
     setTimeout(startAutoScroll, 1500);
 }
 
+
+
+// #region Skills Graph
+
+// #region Skills Graph
+
+/*
+  Categories:
+  1. Programming Languages
+  2. Game Engines
+  3. Frameworks / Libraries
+  4. Tools
+*/
+const skillCategories = [
+    {
+        title: "プログラミング言語",
+        type: "graph",
+        items: [
+            { name: "C++", score: 9 },
+            { name: "C#", score: 9 },
+            { name: "C", score: 8 },
+            { name: "HLSL", score: 6 }
+        ]
+    },
+    {
+        title: "ゲームエンジン",
+        type: "graph",
+        items: [
+            { name: "Unity", score: 8 },
+            { name: "Unreal Engine", score: 5 }
+        ]
+    },
+    {
+        title: "フレームワーク・ライブラリ",
+        type: "list",
+        items: [
+            { name: "DirectX11, ImGui, Runtime Compiled C++" }
+        ]
+    },
+    {
+        title: "ツール",
+        type: "list",
+        items: [
+            { name: "Git, Visual Studio, Rider" },
+        ]
+    }
+];
+
+function renderSkills() {
+    const container = document.getElementById('skill-container');
+    if (!container) return;
+
+    container.innerHTML = skillCategories.map(category => {
+        const itemsHTML = category.items.map(skill => {
+            if (category.type === 'graph') {
+                const blocks = Array(10).fill(0).map((_, i) =>
+                    `<div class="skill-block ${i < skill.score ? 'filled' : ''}"></div>`
+                ).join('');
+
+                return `
+                <li>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>${skill.name}</span>
+                            <span class="skill-score">${skill.score}/10</span>
+                        </div>
+                        <div class="skill-graph">
+                            ${blocks}
+                        </div>
+                    </div>
+                </li>
+                `;
+            } else {
+                // List type
+                return `<li class="skill-list-item">${skill.name}</li>`;
+            }
+        }).join('');
+
+        return `
+        <div class="skill-category">
+            <h3>${category.title}</h3>
+            <ul class="${category.type === 'list' ? 'skill-simple-list' : ''}">
+                ${itemsHTML}
+            </ul>
+        </div>
+        `;
+    }).join('');
+}
+
+// #endregion
+
 document.addEventListener('DOMContentLoaded', () => {
     initializeProfile();
     initializeCarousel();
     setupCarouselAnimation();
+    renderSkills();
 });
 
 

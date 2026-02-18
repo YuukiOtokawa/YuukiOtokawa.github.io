@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OtokawaEngine</title>
     <link rel="stylesheet" href="OtokawaEngine.css">
 </head>
+
 <body>
     <header>
         <div class="project-title">
@@ -38,7 +40,7 @@
 
             GUIを使用してオブジェクトを配置し、スクリプトを書いて動かすUnityのような感覚で制作できることを目標とした。
 
-            Unityを参考に、データ設計を練るのに半年かけ、プロジェクトを3回ほど作り直したが、現在は基本的な機能が実装され、ゲームを制作できるようになったので、DirectXを使用する授業内課題等もこれを使用して制作したものを提出している。
+            データ設計を練るのに半年かけ、プロジェクトを3回ほど作り直したが、現在は基本的な機能が実装され、ゲームを制作できるようになったので、DirectXを使用する授業内課題等もこれを使用して制作したものを提出している。
         </div>
     </div>
     <div class="content">
@@ -67,13 +69,15 @@
 
             (ここにログとdllが映ったエクスプローラーの画像)
         </div>
-        <li>シェーダースクリプト(頂点シェーダー・ピクセルシェーダー・コンピュートシェーダー・ジオメトリシェーダー)</li>
+        <li>シェーダースクリプト</li>
         <div class="auto-p">
             D3DCompilerを使用してエンジン内でHLSLをコンパイル、シェーダーを生成
 
             ユーザーが自由にシェーダーコードを記述し、エンジンに読み込むことが可能
 
-            将来的にはシェーダーグラフのようなGUIでシェーダーを作成できる機能やInputLayout等のcpu処理側の変更を伴う記述をHLSLからできるようにしたい
+            頂点シェーダー・ピクセルシェーダー・コンピュートシェーダーに対応
+
+            今後対応するシェーダーを増やしていく予定
 
             (ここにシェーダーコードの画像と間に合えばシェーダーアセットのProjectウィンドウの画像)
         </div>
@@ -81,7 +85,7 @@
         <div class="auto-p">
             ImGui, ImGuizmoを使用してエンジン内GUIを実装
 
-            シーンビューでのオブジェクト移動・回転・拡縮、各ウィンドウのドッキング・分離、ウィンドウサイズ変更等が可能
+            シーンビューでのオブジェクト移動・回転・拡縮、など、Unityの基本的なウィンドウの機能を再現
 
             (ここにシーンエディタのGIF画像)
         </div>
@@ -97,24 +101,50 @@
     </div>
     <div class="content">
         <h2 id="functions">各種機能紹介</h2>
-        <h3>オブジェクト管理</h3>
+        <li>クラス設計</li>
         <div class="auto-p">
             ここもUnityにならい、統一の基底クラス"EngineMetaFile"を作成、使用するすべてのクラスを継承させることで、オブジェクトを一元管理できるように
 
             ゲームオブジェクトもマテリアルもコンポーネントもこのクラスを継承する。
 
+            (ここにクラス図の画像)
+        </div>
+        <li>オブジェクト管理</li>
+        <div class="auto-p">
             エンジン内部にゲームオブジェクト、コンポーネント、マテリアル等のオブジェクトを一元管理するマネージャークラスを作成し、必要に応じてオブジェクトを生成・削除できるようにした。
 
             EngineMetaFileクラスには一意のfileIDを持たせ、YAMLファイルに読み書きする際にはこの値でオブジェクトを識別する。
 
-            (ここにクラス図の画像)
+            また、クラスごとに決まったclassIDを持たせ、YAMLファイルからオブジェクトを復元する際に使用する。
+
+            (ここはfileIDとclassIDが映ったコードの画像)
         </div>
-        <h3>Game View</h3>
-        <h3>Scene View</h3>
-        <h3>Project</h3>
-        <h3>Inspector</h3>
-        <h3>System Monitor</h3>
-        <h3>Console</h3>
+        <li>アセット管理</li>
+        <div class="auto-p">
+            テクスチャ、シェーダーはゲームオブジェクトと同様に一元管理し、読み込みの重複を防止
+
+            3Dモデルも対応予定
+
+            ゲームオブジェクトはPrefabとしてYAMLファイルに保存・読み込みが可能で、Prefab内で使用されているアセットも同時に管理される。
+
+            (ここにアセットマネージャークラスのコード画像)
+        </div>
+        <li>サウンド機能</li>
+        <div class="auto-p">
+            XAudio2とMedia Foundationを使用してサウンド機能を実装
+
+            WAV, MP3, WMA形式の音声ファイルを読み込み、再生可能
+
+            (ここにサウンド関連のコード画像)
+        </div>
+        <li>ログ出力</li>
+        <div class="auto-p">
+
+        </div>
+        <li>各種ウィンドウ</li>
+        <div class="auto-p">
+
+        </div>
     </div>
     <div class="content">
         <h2 id="media">動画・画像</h2>
@@ -136,18 +166,26 @@
     </div>
     <div class="content">
         <h2 id="github">GitHubリポジトリ</h2>
-        <a href="https://github.com/YuukiOtokawa/OtokawaEngine"><div class="repoLink">OtokawaEngine</div></a>
+        <a href="https://github.com/YuukiOtokawa/OtokawaEngine">
+            <div class="repoLink">OtokawaEngine</div>
+        </a>
     </div>
     <div class="content">
         <h2 id="references">参考にしたもの</h2>
         <div class="reference">
-            <p>UnityCsReference <a href="https://github.com/Unity-Technologies/UnityCsReference.git"><div class="refLink">https://github.com/Unity-Technologies/UnityCsReference.git</div></a></p>
+            <p>UnityCsReference <a href="https://github.com/Unity-Technologies/UnityCsReference.git">
+                    <div class="refLink">https://github.com/Unity-Technologies/UnityCsReference.git</div>
+                </a></p>
         </div>
         <div class="reference">
-            <p>cpprefjp<a href="https://cpprefjp.github.io/index.html"><div class="refLink">https://cpprefjp.github.io/index.html</div></a></p>
+            <p>cpprefjp<a href="https://cpprefjp.github.io/index.html">
+                    <div class="refLink">https://cpprefjp.github.io/index.html</div>
+                </a></p>
         </div>
         <div class="reference">
-            <p>Unity スクリプトリファレンス<a href="https://docs.unity3d.com/ja/2019.3/ScriptReference/index.html"><div class="refLink">https://docs.unity3d.com/ja/2019.3/ScriptReference/index.html</div></a></p>
+            <p>Unity スクリプトリファレンス<a href="https://docs.unity3d.com/ja/2019.3/ScriptReference/index.html">
+                    <div class="refLink">https://docs.unity3d.com/ja/2019.3/ScriptReference/index.html</div>
+                </a></p>
         </div>
     </div>
 
@@ -155,4 +193,5 @@
 
     <script src="OtokawaEngine.js"></script>
 </body>
+
 </html>

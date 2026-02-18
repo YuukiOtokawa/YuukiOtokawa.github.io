@@ -38,20 +38,30 @@
 h1 {
     font-size: var(--fontSizeHeader);
 }
+
 h2 {
     font-size: var(--fontSizeTitle);
     margin-block-end: var(--titleMarginBottom);
 }
+
 h3 {
+    margin-top: 20px;
     font-size: var(--fontSizeSubtitle);
     font-weight: bolder;
 }
+
 p {
     font-size: var(--fontSizeText);
     line-height: var(--textLineHeight);
 }
+
+.auto-p {
+    margin-left: 20px;
+}
+
 li {
-    font-size: var(--fontSizeText);
+    margin-top: 20px;
+    font-size: var(--fontSizeSubtitle);
     list-style-position: inside;
     line-height: var(--textLineHeight);
 }
@@ -72,16 +82,19 @@ header {
 
 .content {
     max-width: var(--contentMaxWidth);
-    margin: var(--contentMargin); /* upper right lower left */
+    margin: var(--contentMargin);
+    /* upper right lower left */
 }
 
 .reference {
-    margin: var(--referenceMargin); /* upper right lower left */
+    margin: var(--referenceMargin);
+    /* upper right lower left */
 }
 
 .repoLink {
     font-size: var(--fontSizeSubtitle);
 }
+
 .refLink {
     font-size: var(--fontSizeText);
 }
@@ -124,6 +137,7 @@ header {
     color: #0066cc;
     text-decoration: underline;
 }
+
 .back-button {
     position: fixed;
     bottom: 30px;

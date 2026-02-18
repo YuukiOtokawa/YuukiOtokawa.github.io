@@ -83,10 +83,7 @@ h3 {
     font-size: var(--fontSizeSubtitle);
 }
 
-.title-about-me {
-    padding-bottom: var(--contentPadding);
-    margin-bottom: 40px;
-}
+/* .title-about-me { removed } */
 
 .about-me {
     max-width: var(--profileMaxWidth);
@@ -95,17 +92,20 @@ h3 {
     border: var(--cardBorderWidth) solid var(--colorCardBorder);
     border-radius: var(--cardBorderRadius);
     background: var(--colorCardBackground);
-    
+
 }
 
 .about-me-content {
     display: flex;
     gap: var(--cardGap);
-    align-items: center;
+    align-items: flex-start;
 }
 
 .profile-image {
     flex: 0 0 var(--profileImageWidth);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 .profile-image img {
@@ -114,6 +114,12 @@ h3 {
     border-radius: var(--cardBorderRadius);
     border: var(--imageBorderWidth) solid var(--imageBorderColor);
     box-shadow: 0 8px 30px rgba(31, 111, 235, 0.3);
+}
+
+.profile-text {
+    text-align: left;
+    font-size: var(--fontSizeText);
+    line-height: 1.6;
 }
 
 .skills {
@@ -133,6 +139,66 @@ h3 {
     margin: var(--listPadding);
     padding-left: var(--listTextPadding);
     position: relative;
+    list-style: none;
+    /* Remove default list style */
+}
+
+.skill-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+}
+
+.skill-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+}
+
+.skill-graph {
+    display: flex;
+    gap: 4px;
+    height: 12px;
+    width: 100%;
+}
+
+.skill-block {
+    flex: 1;
+    background-color: #ddd;
+    /* Inactive color */
+    border-radius: 2px;
+    transition: background-color 0.3s ease;
+}
+
+.skill-graph .filled {
+    background: var(--colorHeaderBackground);
+    /* Active gradient or color */
+}
+
+/* ... existing styles ... */
+
+.skill-graph .filled {
+    background: var(--colorHeaderBackground);
+    /* Active gradient or color */
+}
+
+/* Optional: Make the active blocks glow slightly */
+.skill-graph .filled {
+    box-shadow: 0 0 4px rgba(31, 111, 235, 0.4);
+}
+
+.skill-category {
+    margin-bottom: 30px;
+}
+
+.skill-category h3 {
+    margin-left: 20px;
+    /* Align with list items generally */
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
 }
 
 @media (max-width: 768px) {
@@ -173,7 +239,8 @@ h3 {
     display: flex;
     gap: var(--cardGap);
     transition: transform 0.6s ease;
-    justify-content: flex-start; /* 追加 */
+    justify-content: flex-start;
+    /* 追加 */
 }
 
 /* 矢印ボタン */
@@ -204,8 +271,8 @@ h3 {
 
 /* プロジェクトカード */
 .project-card {
-    min-width: 350px;
-    min-height: 300px;
+    width: 350px;
+    height: 300px;
     background-color: var(--colorCardBackground);
     background-size: cover;
     background-position: center;
@@ -221,7 +288,7 @@ h3 {
 
 .project-card-content {
     padding: var(--cardPadding);
-    background: rgba(0, 0, 0, 0.65);
+    background: rgba(48, 48, 48, 0.65);
     min-height: 100%;
     color: #ffffff;
     border-radius: var(--cardBorderRadius);
@@ -254,25 +321,29 @@ h3 {
 }
 
 .project-card ul li:before {
-    content: "? ";
+    content: "♪ ";
     color: #1f6feb;
     font-weight: bold;
 }
 
 .project-card-link {
-    text-decoration: none; /* 下線を消す */
-    color: inherit; /* 親要素の色を継承（青色にならない） */
+    text-decoration: none;
+    /* 下線を消す */
+    color: inherit;
+    /* 親要素の色を継承（青色にならない） */
     display: block;
     flex-shrink: 0;
 }
 
 .project-card-link:hover {
-    text-decoration: none; /* ホバー時も下線を消す */
+    text-decoration: none;
+    /* ホバー時も下線を消す */
 }
 
 /* さらに確実にするなら */
 .project-card-link * {
-    text-decoration: none; /* すべての子要素の下線を消す */
+    text-decoration: none;
+    /* すべての子要素の下線を消す */
 }
 
 .tech {
@@ -314,15 +385,15 @@ footer p {
     .project-card {
         min-width: 280px;
     }
-    
+
     header h1 {
         font-size: 2em;
     }
-    
+
     .carousel-wrapper {
         gap: 0;
     }
-    
+
     .carousel-btn {
         position: absolute;
         top: 50%;
@@ -331,11 +402,11 @@ footer p {
         height: 40px;
         background: rgba(31, 111, 235, 0.9);
     }
-    
+
     .carousel-btn.prev {
         left: 10px;
     }
-    
+
     .carousel-btn.next {
         right: 10px;
     }

@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ポートフォリオ[音川 優樹]</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <header>
         <h1>ポートフォリオ[音川 優樹]</h1>
@@ -15,10 +17,11 @@
         <div class="carousel-wrapper">
             <button class="carousel-btn prev" id="prevBtn">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
                 </svg>
             </button>
-            
+
             <div class="carousel-container">
                 <div class="carousel">
                     <!-- JavaScriptで動的に生成 -->
@@ -27,30 +30,32 @@
 
             <button class="carousel-btn next" id="nextBtn">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
                 </svg>
             </button>
         </div>
     </section>
 
-    <div class="title-about-me">
-        <h2>About Me</h2>
-    </div>
-
     <div class="about-me">
+        <h2>About Me</h2>
         <div class="about-me-content">
             <div class="profile-image">
                 <img src="assets/profile-image.jpg" alt="音川優樹">
+                <div class="profile-text">
+                    <h3>音川 優樹</h3>
+                    <p>HAL東京 専門課程4年制</p>
+                    <p>ゲーム4年制学科 ゲーム制作コース</p>
+                    <p>2002年7月31日生</p>
+                    <p>ゲームエンジンなど、開発環境エンジニア志望です！</p>
+                </div>
             </div>
 
             <section class="skills">
                 <h2>スキルセット</h2>
-                <ul>
-                    <li>プログラミング言語: C, C++, C#, HLSL</li>
-                    <li>ゲームエンジン: Unity, Unreal Engine</li>
-                    <li>フレームワーク: DirectX11, ImGui, Runtime Compiled C++</li>
-                    <li>ツール: Git</li>
-                </ul>
+                <div id="skill-container">
+                    <!-- JavaScriptで動的に生成 -->
+                </div>
             </section>
         </div>
     </div>
@@ -62,4 +67,5 @@
     <script src="config.js"></script>
     <script src="script.js"></script>
 </body>
+
 </html>
