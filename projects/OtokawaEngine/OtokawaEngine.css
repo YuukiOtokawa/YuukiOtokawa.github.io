@@ -43,7 +43,7 @@
 }
 
 .thumbnail img {
-    width: 100%;
+    width: 70%;
 }
 
 h1 {
@@ -63,7 +63,7 @@ h3 {
 
 p {
     font-family: var(--fontFamily);
-    /* ƒtƒHƒ“ƒg‚ÉˆêŠÑ«‚ğ‚½‚¹‚é‚½‚ß”O‚Ìˆ× */
+    /* ãƒ•ã‚©ãƒ³ãƒˆã«ä¸€è²«æ€§ã‚’æŒãŸã›ã‚‹ãŸã‚å¿µã®ç‚º */
     font-size: var(--fontSizeText);
     line-height: var(--textLineHeight);
     overflow-wrap: break-word;
