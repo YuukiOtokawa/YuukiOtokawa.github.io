@@ -67,8 +67,9 @@
 
             コンパイル対象ファイルに変更を検知すると自動で再コンパイルを行い、dllファイルを生成し、エンジンに読み込む
 
-            (ここにログとdllが映ったエクスプローラーの画像)
+            ↓ コンパイルログの一部
         </div>
+        <img src="assets/CompileLog.png" alt="スクリプトコンパイルで出力されるログの一部">
         <li>シェーダースクリプト</li>
         <div class="auto-p">
             D3DCompilerを使用してエンジン内でHLSLをコンパイル、シェーダーを生成
@@ -77,26 +78,22 @@
 
             頂点シェーダー・ピクセルシェーダー・コンピュートシェーダーに対応
 
-            今後対応するシェーダーを増やしていく予定
-
-            (ここにシェーダーコードの画像と間に合えばシェーダーアセットのProjectウィンドウの画像)
+            現在実装作業進行中
         </div>
         <li>マウス操作可能なGUI・シーンエディタ</li>
         <div class="auto-p">
             ImGui, ImGuizmoを使用してエンジン内GUIを実装
 
             シーンビューでのオブジェクト移動・回転・拡縮、など、Unityの基本的なウィンドウの機能を再現
-
-            (ここにシーンエディタのGIF画像)
         </div>
+        <img src="assets/GuizmoManipulating.gif" alt="ギズモ操作の様子">
         <li>ドラッグドロップによるファイル操作</li>
         <div class="auto-p">
             ImGuiの機能を利用し、マウスドラッグにより情報を自由に移動することが可能に
 
             これを利用して、ProjectウィンドウからInspectorウィンドウやHierarchyウィンドウへオブジェクトをドラッグドロップすることが可能
-
-            (ここにドラッグドロップしているGIF画像)
         </div>
+        <img src="assets/AssetManipulating.gif" alt="ドラッグドロップの様子">
         <li>変数の値をリアルタイムで編集可能</li>
     </div>
     <div class="content">
@@ -116,9 +113,8 @@
             EngineMetaFileクラスには一意のfileIDを持たせ、YAMLファイルに読み書きする際にはこの値でオブジェクトを識別する。
 
             また、クラスごとに決まったclassIDを持たせ、YAMLファイルからオブジェクトを復元する際に使用する。
-
-            (ここはfileIDとclassIDが映ったコードの画像)
         </div>
+        <img src="assets/ClassIDAndFileID.png" alt="クラスIDとファイルIDが定義されたコード">
         <li>アセット管理</li>
         <div class="auto-p">
             テクスチャ、シェーダーはゲームオブジェクトと同様に一元管理し、読み込みの重複を防止
@@ -127,28 +123,25 @@
 
             ゲームオブジェクトはPrefabとしてYAMLファイルに保存・読み込みが可能で、Prefab内で使用されているアセットも同時に管理される。
 
-            (ここにアセットマネージャークラスのコード画像)
+            ↓ エンジンが操作するアセットリストのYAMLファイル。左の数字は他のオブジェクト等との連番になるFileID
         </div>
+        <img src="assets/AssetList.png" alt="アセットリスト">
         <li>サウンド機能</li>
         <div class="auto-p">
             XAudio2とMedia Foundationを使用してサウンド機能を実装
 
             WAV, MP3, WMA形式の音声ファイルを読み込み、再生可能
 
-            (ここにサウンド関連のコード画像)
+            ↓ Media Foundationで音声をWAVに変換してXAudio2で読み込むコード
         </div>
+        <img src="assets/AudioLoader.png" alt="オーディオローダークラスのコード">
         <li>ログ出力</li>
         <div class="auto-p">
+            エンジンのGUIにログウィンドウを実装。ホットリロードなどのログが表示される。スクリプトからログを出力することも可能。
 
+            ↓ ホットリロードのログが流れてくるログ。
         </div>
-        <li>各種ウィンドウ</li>
-        <div class="auto-p">
-
-        </div>
-    </div>
-    <div class="content">
-        <h2 id="media">動画・画像</h2>
-        <p>いろいろ画像を配置するつもり</p>
+        <img src="assets/ConsoleWindow.png" alt="コンソールウィンドウ">
     </div>
     <div class="content">
         <h2 id="future">今後の展望・実装したい機能</h2>
@@ -158,11 +151,32 @@
     </div>
     <div class="content">
         <h2 id="libraries">使用したライブラリと使用用途</h2>
-        <li>ImGui: エンジン内GUI</li>
-        <li>Runtime Compiled C++: C++スクリプトの動的コンパイル</li>
-        <li>DirectX Tex: 画像ファイル読み込み</li>
-        <li>assimp: 3Dモデル(fbx)読み込み</li>
-        <li>yaml-cpp: 各種データをYAMLファイルに入出力(シーン・Prefab)</li>
+        <div class="reference">
+            <p>ImGui: エンジン内GUI <a href="https://github.com/ocornut/imgui">
+                    <div class="refLink">https://github.com/ocornut/imgui</div>
+                </a></p>
+        </div>
+        <div class="reference">
+            <p>Runtime Compiled C++: C++スクリプトの動的コンパイル <a
+                    href="https://github.com/RuntimeCompiledCplusplus/RuntimeCompiledCplusplus">
+                    <div class="refLink">https://github.com/RuntimeCompiledCplusplus/RuntimeCompiledCplusplus</div>
+                </a></p>
+        </div>
+        <div class="reference">
+            <p>DirectX Tex: 画像ファイル読み込み <a href="https://github.com/microsoft/DirectXTex">
+                    <div class="refLink">https://github.com/microsoft/DirectXTex</div>
+                </a></p>
+        </div>
+        <div class="reference">
+            <p>assimp: 3Dモデル(fbx)読み込み <a href="https://github.com/assimp/assimp">
+                    <div class="refLink">https://github.com/assimp/assimp</div>
+                </a></p>
+        </div>
+        <div class="reference">
+            <p>yaml-cpp: 各種データをYAMLファイルに入出力(シーン・Prefab) <a href="https://github.com/jbeder/yaml-cpp">
+                    <div class="refLink">https://github.com/jbeder/yaml-cpp</div>
+                </a></p>
+        </div>
     </div>
     <div class="content">
         <h2 id="github">GitHubリポジトリ</h2>

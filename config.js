@@ -17,8 +17,10 @@ const contentProperty = {
 const images = {
     ProfileImage: "assets/profile-image.jpg",
     OtokawaEngineCard: "assets/ProjectCard/EngineThumbnail.png",
-    Project2Card: "assets/ThisIsPicture.png",
+    Project2Card: "assets/ProjectCard/DogThumbnail.png",
     Project3Card: "assets/ThisIsPicture.png",
+    Project4Card: "assets/ProjectCard/HAKOPOSThumbnail.png",
+    Project5Card: "assets/ThisIsPicture.png",
 }
 
 const links = {
@@ -52,10 +54,10 @@ const projectCardData = {
             ],
         },
         {
-            title: "祓魔犬",
+            title: "祓魔犬(ページ制作中)",
             pageLink: "#",
             cardThumbnail: images.Project2Card,
-            detail: "2年の進級制作で制作し�?2Dアクションゲー�?",
+            detail: "2年の進級制作で制作した2Dアクションゲーム",
             features: [
                 "チーム制作",
                 "進行管理",
@@ -65,7 +67,7 @@ const projectCardData = {
             ],
         },
         {
-            title: "FormulaXTactics",
+            title: "FormulaXTactics(ページ制作中)",
             pageLink: "#",
             cardThumbnail: images.Project3Card,
             detail: "3年の制作演習で制作したターン制カードゲーム",
@@ -76,9 +78,9 @@ const projectCardData = {
             ],
         },
         {
-            title: "ハコポス!!!",
+            title: "ハコポス!!!(ページ制作中)",
             pageLink: "#",
-            cardThumbnail: images.Project3Card,
+            cardThumbnail: images.Project4Card,
             detail: "2年にチームを組んで制作した落ちものパズルゲーム",
             features: [
                 "チーム制作",
@@ -87,9 +89,9 @@ const projectCardData = {
             ],
         },
         {
-            title: "妖怪探偵",
+            title: "妖怪探偵(ページ制作中)",
             pageLink: "#",
-            cardThumbnail: images.Project3Card,
+            cardThumbnail: images.Project5Card,
             detail: "3年の夏休みから制作したアドベンチャーゲーム",
             features: [
                 "チーム制作",

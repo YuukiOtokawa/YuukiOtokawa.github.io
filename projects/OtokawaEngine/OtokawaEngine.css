@@ -51,12 +51,16 @@ h3 {
 }
 
 p {
+    font-family: var(--fontFamily);
+    /* ƒtƒHƒ“ƒg‚ÉˆêŠÑ«‚ğ‚½‚¹‚é‚½‚ß”O‚Ìˆ× */
     font-size: var(--fontSizeText);
     line-height: var(--textLineHeight);
+    overflow-wrap: break-word;
 }
 
 .auto-p {
     margin-left: 20px;
+    overflow-wrap: break-word;
 }
 
 li {
@@ -68,7 +72,9 @@ li {
 
 body {
     font-family: var(--fontFamily);
-    padding: 0 var(--pagePadding);
+    overflow-x: hidden;
+    width: 100%;
+    margin: 0;
 }
 
 header {
@@ -76,14 +82,21 @@ header {
     padding: var(--headerPadding);
     background: var(--colorPageBackground);
     margin-bottom: var(--headerMarginBottom);
-    margin-left: calc(-1 * var(--pagePadding));
-    margin-right: calc(-1 * var(--pagePadding));
+    width: 100%;
 }
 
 .content {
     max-width: var(--contentMaxWidth);
     margin: var(--contentMargin);
     /* upper right lower left */
+}
+
+.content img {
+    max-width: 75%;
+    width: auto;
+    height: auto;
+    display: block;
+    margin: 20px 0;
 }
 
 .reference {
@@ -97,12 +110,11 @@ header {
 
 .refLink {
     font-size: var(--fontSizeText);
+    word-break: break-all;
 }
 
 .project-title {
     text-align: center;
-    margin: var(--projectTitleMargin);
-    padding: var(--contentPadding);
 }
 
 .table-of-contents {
