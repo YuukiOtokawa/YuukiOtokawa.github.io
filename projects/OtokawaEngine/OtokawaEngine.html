@@ -15,6 +15,10 @@
         </div>
     </header>
 
+    <nav class="thumbnail">
+        <img src="assets/Thumbnail.png" alt="エンジン全体のスクリーンショット">
+    </nav>
+
     <nav class="table-of-contents">
         <h2>目次</h2>
         <ul>
@@ -104,8 +108,9 @@
 
             ゲームオブジェクトもマテリアルもコンポーネントもこのクラスを継承する。
 
-            (ここにクラス図の画像)
+            ↓ EngineMetaFileを継承する一部クラスの継承イメージ
         </div>
+        <img src="assets/ClassDiagram.png" alt="クラス図">
         <li>オブジェクト管理</li>
         <div class="auto-p">
             エンジン内部にゲームオブジェクト、コンポーネント、マテリアル等のオブジェクトを一元管理するマネージャークラスを作成し、必要に応じてオブジェクトを生成・削除できるようにした。
@@ -125,7 +130,11 @@
 
             ↓ エンジンが操作するアセットリストのYAMLファイル。左の数字は他のオブジェクト等との連番になるFileID
         </div>
-        <img src="assets/AssetList.png" alt="アセットリスト">
+        <div class="image-row">
+            <img src="assets/AssetList.png" alt="アセットリスト">
+            <img src="assets/ObjectList.png" alt="オブジェクトリスト">
+        </div>
+
         <li>サウンド機能</li>
         <div class="auto-p">
             XAudio2とMedia Foundationを使用してサウンド機能を実装
@@ -180,7 +189,7 @@
     </div>
     <div class="content">
         <h2 id="github">GitHubリポジトリ</h2>
-        <a href="https://github.com/YuukiOtokawa/OtokawaEngine">
+        <a href="https://github.com/YuukiOtokawa/Engine">
             <div class="repoLink">OtokawaEngine</div>
         </a>
     </div>

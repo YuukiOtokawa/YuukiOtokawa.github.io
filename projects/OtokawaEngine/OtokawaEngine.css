@@ -35,6 +35,17 @@
     box-sizing: border-box;
 }
 
+.thumbnail {
+    display: flex;
+    justify-content: center;
+    width: 70%;
+    margin: var(--contentMargin);
+}
+
+.thumbnail img {
+    width: 100%;
+}
+
 h1 {
     font-size: var(--fontSizeHeader);
 }
@@ -169,4 +180,18 @@ header {
 .back-button:hover {
     background-color: #555;
     transform: translateY(-2px);
+}
+
+.image-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin: 20px 0;
+    align-items: flex-start;
+}
+
+.content .image-row img {
+    margin: 0;
+    max-width: 48%;
+    width: 48%;
 }
