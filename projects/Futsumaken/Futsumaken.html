@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>祓魔犬</title>
+    <link rel="stylesheet" href="Futsumaken.css">
+</head>
+
+<body>
+    <header>
+        <div class="project-title">
+            <h1>祓魔犬</h1>
+        </div>
+    </header>
+
+    <nav class="thumbnail">
+        <img src="../../assets/ProjectCard/DogThumbnail.png" alt="ゲームプレイのイメージ画像">
+    </nav>
+
+    <nav class="table-of-contents">
+        <h2>目次</h2>
+        <ul>
+            <li><a href="#overview">概要</a></li>
+            <li><a href="#period">製作期間</a></li>
+            <li><a href="#technology">使用技術</a></li>
+            <li><a href="#features">特徴</a></li>
+            <li><a href="#systems">各種ゲームシステム紹介</a></li>
+            <li><a href="#future">今後の展望・実装したい機能</a></li>
+            <li><a href="#github">GitHubリポジトリ</a></li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <h2 id="overview">概要</h2>
+        <div class="auto-p">
+            「祓魔犬」は、専門学校2年の進級制作としてチームで制作した、和風ダークファンタジー世界観の2D横スクロールアクションゲームです。
+
+            プレイヤーは霊力を持った黒い犬「祓魔犬」となり、襲い来る妖怪たちを退治しながら進みます。
+
+            私はプログラム全般と、チームの進行管理（スケジュール管理）を担当しました。
+
+            DirectX11をベースに自作のフレームワークを使用し、滑らかなアクションと躍動感のあるエフェクトの描画にこだわりました。
+        </div>
+    </div>
+    <div class="content">
+        <h2 id="period">製作期間</h2>
+        <div class="auto-p">
+            約6か月 (2年生の進級制作)
+        </div>
+    </div>
+    <div class="content">
+        <h2 id="technology">使用技術</h2>
+        <div class="auto-p">
+            使用言語: C++ (ゲームロジック、描画制御), HLSL (エフェクト・描画用シェーダー)
+
+            グラフィックAPI: DirectX11
+
+            ツール: Git / GitHub (バージョン管理・進行管理), Redmine (タスク管理)
+        </div>
+    </div>
+    <div class="content">
+        <h2 id="features">特徴</h2>
+        <li>少人数チームでの徹底した進行管理</li>
+        <div class="auto-p">
+            ガントチャートやRedmineを用い、企画から実装完了までのタスクの可視化と遅延対策を徹底。
+
+            各メンバーの得意分野に合わせたアサインを行い、予定通りの期間内にクオリティの高いゲームを完成させました。
+        </div>
+        <li>DirectX11による自作2Dエンジン</li>
+        <div class="auto-p">
+            スプライト描画、コリジョン判定、アニメーション制御、パーティクルシステムなどをDirectX11上で実装。
+
+            描画負荷を最小限に抑えつつ、ダイナミックなアクションを実現しました。
+        </div>
+        <li>和風ダークファンタジーを彩る演出</li>
+        <div class="auto-p">
+            日本古来の妖怪が登場するダークな世界観を、独特のカラーフィルターとエフェクトで演出。
+
+            主人公（犬）の滑らかな走りや攻撃アニメーションに合わせた残像・火花エフェクトをシェーダー側で細かく調整しました。
+        </div>
+    </div>
+    <div class="content">
+        <h2 id="systems">各種ゲームシステム紹介</h2>
+        <li>プレイヤー（祓魔犬）のアクション制御</li>
+        <div class="auto-p">
+            ダッシュ、壁キック、連続コンボ攻撃などの軽快なアクションを実装。
+
+            状態遷移（ステートパターン）をきれいに設計することで、バグを抑え柔軟なアクションの追加を可能にしました。
+        </div>
+        <li>エフェクトシステム</li>
+        <div class="auto-p">
+            パーティクルを大量に発生させるためのバッファ管理と、頂点シェーダーを利用した高速描画を実装。
+
+            斬撃の軌跡や、敵を倒した際の光の霧散などを美麗に表現しています。
+        </div>
+        <li>ステージマネージャーとコリジョン</li>
+        <div class="auto-p">
+            矩形や円、線分による当たり判定を独自実装。
+
+            地形データと敵オブジェクト、プレイヤーのインタラクションを高度に最適化し、めり込みのないスムーズな移動を実現しました。
+        </div>
+    </div>
+    <div class="content">
+        <h2 id="future">今後の展望・実装したい機能</h2>
+        <li>物理エンジンの本格統合（2D剛体の挙動調整）</li>
+        <li>ボス敵の高度なAI行動ツリーの実装</li>
+        <li>演出用のポストエフェクト（ブラーや色調補正）のバリエーション追加</li>
+    </div>
+    <div class="content">
+        <h2 id="github">GitHubリポジトリ</h2>
+        <a href="https://github.com/YuukiOtokawa/Futsumaken">
+            <div class="repoLink">Futsumaken (リポジトリリンク)</div>
+        </a>
+    </div>
+
+    <a href="../../index.html" class="back-button">ホームに戻る</a>
+
+    <script src="Futsumaken.js"></script>
+</body>
+
+</html>

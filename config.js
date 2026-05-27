@@ -54,8 +54,8 @@ const projectCardData = {
             ],
         },
         {
-            title: "祓魔犬(ページ制作中)",
-            pageLink: "#",
+            title: "祓魔犬",
+            pageLink: "projects/Futsumaken/Futsumaken.html",
             cardThumbnail: images.Project2Card,
             detail: "2年の進級制作で制作した2Dアクションゲーム",
             features: [
@@ -67,8 +67,8 @@ const projectCardData = {
             ],
         },
         {
-            title: "FormulaXTactics(ページ制作中)",
-            pageLink: "#",
+            title: "FormulaXTactics",
+            pageLink: "projects/FormulaXTactics/FormulaXTactics.html",
             cardThumbnail: images.Project3Card,
             detail: "3年の制作演習で制作したターン制カードゲーム",
             features: [
@@ -78,8 +78,8 @@ const projectCardData = {
             ],
         },
         {
-            title: "ハコポス!!!(ページ制作中)",
-            pageLink: "#",
+            title: "ハコポス!!!",
+            pageLink: "projects/HAKOPOS/HAKOPOS.html",
             cardThumbnail: images.Project4Card,
             detail: "2年にチームを組んで制作した落ちものパズルゲーム",
             features: [
@@ -89,8 +89,8 @@ const projectCardData = {
             ],
         },
         {
-            title: "妖怪探偵(ページ制作中)",
-            pageLink: "#",
+            title: "妖怪探偵",
+            pageLink: "projects/YokaiTantei/YokaiTantei.html",
             cardThumbnail: images.Project5Card,
             detail: "3年の夏休みから制作したアドベンチャーゲーム",
             features: [

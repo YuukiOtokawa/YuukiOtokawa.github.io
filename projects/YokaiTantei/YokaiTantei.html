@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>妖怪探偵</title>
+    <link rel="stylesheet" href="YokaiTantei.css">
+</head>
+
+<body>
+    <header>
+        <div class="project-title">
+            <h1>妖怪探偵</h1>
+        </div>
+    </header>
+
+    <nav class="thumbnail">
+        <img src="../../assets/ThisIsPicture.png" alt="ゲームプレイのイメージ画像">
+    </nav>
+
+    <nav class="table-of-contents">
+        <h2>目次</h2>
+        <ul>
+            <li><a href="#overview">概要</a></li>
+            <li><a href="#period">製作期間</a></li>
+            <li><a href="#technology">使用技術</a></li>
+            <li><a href="#features">特徴</a></li>
+            <li><a href="#systems">各種ゲームシステム紹介</a></li>
+            <li><a href="#future">今後の展望・実装したい機能</a></li>
+            <li><a href="#github">GitHubリポジトリ</a></li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <h2 id="overview">概要</h2>
+        <div class="auto-p">
+            「妖怪探偵」は、専門学校3年の夏休みからチームを組んで制作している、和風レトロな雰囲気のミステリーアドベンチャーゲームです。
+
+            プレイヤーは探偵となり、人間と妖怪が共存する不思議な街で巻き起こる奇妙な事件の謎を解き明かしていきます。
+
+            私はプログラム全般と、GitHubを使用したプロジェクト全体のリポジトリ管理・ブランチ戦略の構築を担当しました。
+
+            Unity上で動作する高度なテキストアドベンチャーエンジンを構築し、ストーリーの分岐や演出を柔軟にコントロールできるシステムを実現しています。
+        </div>
+    </div>
+    <div class="content">
+        <h2 id="period">製作期間</h2>
+        <div class="auto-p">
+            2025年8月 〜 現在進行中 (3年生の夏休みから開始)
+        </div>
+    </div>
+    <div class="content">
+        <h2 id="technology">使用技術</h2>
+        <div class="auto-p">
+            ゲームエンジン: Unity 2022.3 LTS
+
+            使用言語: C#
+
+            データ設計: ScriptableObject / JSON
+
+            バージョン管理: Git / GitHub (Git Flowベースのブランチ運用)
+        </div>
+    </div>
+    <div class="content">
+        <h2 id="features">特徴</h2>
+        <li>独自のノベル・アドベンチャーエンジン</li>
+        <div class="auto-p">
+            テキストの表示速度制御、ルビ対応、立ち絵フェード、BGM・SEの再生などを一括で制御する強力なイベント管理スクリプトを構築。
+
+            シナリオファイル（JSON）を読み込むだけで複雑な演出が自動再生されるシステムを実現しました。
+        </div>
+        <li>確実なGitブランチ運用による衝突防止</li>
+        <div class="auto-p">
+            チーム開発におけるUnityのシーンやプレハブの競合を未然に防ぐため、Git Flowをベースにした機能単位のブランチ運用ルールを策定。
+
+            Pull Requestによる相互レビュー体制を作り、コード品質の担保を行いました。
+        </div>
+        <li>ミステリアスな和風の世界観を彩る演出</li>
+        <div class="auto-p">
+            レトロでミステリアスな街の雰囲気を表現するため、2Dイラストの立ち絵と3D背景のライティングを緻密に調整。
+
+            妖怪が出現する際のおどろおどろしいエフェクトや画面の歪み演出をUnityのPost-Processingで実装しました。
+        </div>
+    </div>
+    <div class="content">
+        <h2 id="systems">各種ゲームシステム紹介</h2>
+        <li>証言・証拠管理（インベントリ）システム</li>
+        <div class="auto-p">
+            探索や会話によって得られた「証拠品」や「証言」をScriptableObjectで一元管理し、いつでも手帳画面で閲覧できるシステムを構築。
+
+            特定の会話イベントで正しい証拠を提示する（突きつける）ロジックを汎用化しました。
+        </div>
+        <li>会話イベントパーサー</li>
+        <div class="auto-p">
+            エクセル等で記述されたシナリオデータをJSON経由でパースし、イベントキューに入れて1つずつ実行する仕組みを実装。
+
+            「キャラクター切り替え」「背景変更」「効果音再生」といった多様なコマンドをテキストデータだけで指示できるようになりました。
+        </div>
+        <li>フラグ管理＆分岐システム</li>
+        <div class="auto-p">
+            プレイヤーの選択肢や調査した場所によって変化する何百ものイベントフラグを、Bit配列やハッシュマップを用いて軽量・安全にセーブ＆ロードする機能を実装。
+
+            バッドエンドや真エンドへのルート分岐を正確にコントロールします。
+        </div>
+    </div>
+    <div class="content">
+        <h2 id="future">今後の展望・実装したい機能</h2>
+        <li>シナリオ分岐を視覚的に確認できる「フローチャートシステム」の構築</li>
+        <li>Live2Dなどを導入したキャラクター立ち絵の滑らかなアニメーション化</li>
+        <li>プレイヤーの探索パートを強化する「3D捜査モード」の統合</li>
+    </div>
+    <div class="content">
+        <h2 id="github">GitHubリポジトリ</h2>
+        <a href="https://github.com/YuukiOtokawa/YokaiTantei">
+            <div class="repoLink">YokaiTantei (リポジトリリンク)</div>
+        </a>
+    </div>
+
+    <a href="../../index.html" class="back-button">ホームに戻る</a>
+
+    <script src="YokaiTantei.js"></script>
+</body>
+
+</html>

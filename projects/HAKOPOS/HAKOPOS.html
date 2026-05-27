@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ハコポス!!!</title>
+    <link rel="stylesheet" href="HAKOPOS.css">
+</head>
+
+<body>
+    <header>
+        <div class="project-title">
+            <h1>ハコポス!!!</h1>
+        </div>
+    </header>
+
+    <nav class="thumbnail">
+        <img src="../../assets/ProjectCard/HAKOPOSThumbnail.png" alt="ゲームプレイのイメージ画像">
+    </nav>
+
+    <nav class="table-of-contents">
+        <h2>目次</h2>
+        <ul>
+            <li><a href="#overview">概要</a></li>
+            <li><a href="#period">製作期間</a></li>
+            <li><a href="#technology">使用技術</a></li>
+            <li><a href="#features">特徴</a></li>
+            <li><a href="#systems">各種ゲームシステム紹介</a></li>
+            <li><a href="#future">今後の展望・実装したい機能</a></li>
+            <li><a href="#github">GitHubリポジトリ</a></li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <h2 id="overview">概要</h2>
+        <div class="auto-p">
+            「ハコポス!!!」は、専門学校2年の時にチームを組んで制作した、ポップでカジュアルな3D落ちものアクションパズルゲームです。
+
+            プレイヤーは上から落ちてくる様々なデザインの可愛い「ハコ（プレゼントボックス）」を回転・移動させ、透明な「ポスト（箱）」の中にきれいに収めて消していくルールとなっています。
+
+            私はメインプログラマーとして、Unityの物理演算（Nvidia PhysX）を活かした独自のスタック＆衝突ロジックの構築や、ゲームフロー全体の制御、およびGitHubを使用したソースコードのバージョン管理・競合解消を担当しました。
+        </div>
+    </div>
+    <div class="content">
+        <h2 id="period">製作期間</h2>
+        <div class="auto-p">
+            約3か月 (2年生のゲーム制作課題)
+        </div>
+    </div>
+    <div class="content">
+        <h2 id="technology">使用技術</h2>
+        <div class="auto-p">
+            ゲームエンジン: Unity 2021.3 LTS
+
+            使用言語: C#
+
+            物理演算: Unity Physics (3D)
+
+            バージョン管理: Git / GitHub (Git LFS使用)
+        </div>
+    </div>
+    <div class="content">
+        <h2 id="features">特徴</h2>
+        <li>物理演算による予測不能な楽しさ</li>
+        <div class="auto-p">
+            従来のグリッド単位で動くパズルゲームとは異なり、オブジェクトがリアルに転がったり崩れたりする3D物理挙動を実装。
+
+            予期しない積み上がり方や大連鎖が起きる、にぎやかでカジュアルなゲーム性を実現しました。
+        </div>
+        <li>GitHubをフル活用したチーム開発</li>
+        <div class="auto-p">
+            デザイナーやプランナーが作成した3Dモデル、UI素材を速やかに統合するため、GitHubを用いたアセット管理フローを整備。
+
+            プログラムだけでなくプロジェクト管理の効率化に貢献しました。
+        </div>
+        <li>ポップで分かりやすいビジュアルとエフェクト</li>
+        <div class="auto-p">
+            箱が弾ける際のおもちゃ箱のような星型のパーティクルや、コンボ数に応じた賑やかなUIアニメーションを実装。
+
+            触っているだけで楽しいゲーム体験を目指しました。
+        </div>
+    </div>
+    <div class="content">
+        <h2 id="systems">各種ゲームシステム紹介</h2>
+        <li>3D物理コライダーの高度な調整</li>
+        <div class="auto-p">
+            物理演算による「すり抜け」や「不要な振動」を防ぐため、コライダーの結合（Compound Colliders）や物理マテリアル（摩擦・反発）を緻密に設計。
+
+            ストレスのない積み上げ感を実現しました。
+        </div>
+        <li>コンボ＆消去判定アルゴリズム</li>
+        <div class="auto-p">
+            同じ色や模様の「ハコ」が隣接して3つ以上くっついたことを物理的な接触（OnCollisionEnter / Trigger）と再帰探索（DFS）を用いて検出し、瞬時に消滅させるカスタムアルゴリズムを構築。
+
+            3D空間における柔軟なマッチング判定を軽量に実現しました。
+        </div>
+        <li>動的UIマネージャー</li>
+        <div class="auto-p">
+            ゲームの進行状況（スコアアップ、制限時間アラート、ゲームオーバー）に応じて、UIが弾むように拡大縮小するスクリプトをC#で実装。
+
+            プレイヤーのモチベーションを高める演出を施しました。
+        </div>
+    </div>
+    <div class="content">
+        <h2 id="future">今後の展望・実装したい機能</h2>
+        <li>異なる種類の「特殊ハコ」（爆弾ハコ、磁石ハコなど）の追加</li>
+        <li>Joy-Conなどのコントローラーでのジャイロ操作対応</li>
+        <li>対戦型画面分割マルチプレイモードの実装</li>
+    </div>
+    <div class="content">
+        <h2 id="github">GitHubリポジトリ</h2>
+        <a href="https://github.com/YuukiOtokawa/HAKOPOS">
+            <div class="repoLink">HAKOPOS (リポジトリリンク)</div>
+        </a>
+    </div>
+
+    <a href="../../index.html" class="back-button">ホームに戻る</a>
+
+    <script src="HAKOPOS.js"></script>
+</body>
+
+</html>

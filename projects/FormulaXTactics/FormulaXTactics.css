@@ -1,7 +1,7 @@
 :root {
     /* color */
-    --colorCharacter: #1e252b;
-    --colorPageBackground: #d8e2eb;
+    --colorCharacter: #111e25;
+    --colorPageBackground: #e1f4f9;
 
     /* size */
     --pagePadding: 20px;
@@ -50,13 +50,13 @@
 
 h1 {
     font-size: var(--fontSizeHeader);
-    color: #00509d; /* DirectX/エンジンらしいディープブルー */
+    color: #007791; /* シアン系 */
 }
 
 h2 {
     font-size: var(--fontSizeTitle);
     margin-block-end: var(--titleMarginBottom);
-    border-bottom: 2px solid #00509d;
+    border-bottom: 2px solid #007791;
     padding-bottom: 5px;
 }
 
@@ -100,7 +100,7 @@ header {
     background: var(--colorPageBackground);
     margin-bottom: var(--headerMarginBottom);
     width: 100%;
-    border-bottom: 4px solid #00509d;
+    border-bottom: 4px solid #007791;
 }
 
 .content {
@@ -124,7 +124,7 @@ header {
 
 .repoLink {
     font-size: var(--fontSizeSubtitle);
-    color: #00509d;
+    color: #007791;
     text-decoration: none;
     font-weight: bold;
 }
@@ -136,7 +136,7 @@ header {
 .refLink {
     font-size: var(--fontSizeText);
     word-break: break-all;
-    color: #1a365d;
+    color: #005a70;
 }
 
 .project-title {
@@ -175,7 +175,7 @@ header {
 }
 
 .table-of-contents a:hover {
-    color: #00509d;
+    color: #007791;
     text-decoration: underline;
 }
 
@@ -184,7 +184,7 @@ header {
     bottom: 30px;
     right: 30px;
     padding: 15px 25px;
-    background-color: #00509d;
+    background-color: #007791;
     color: #fff;
     text-decoration: none;
     border-radius: 8px;
@@ -196,7 +196,7 @@ header {
 }
 
 .back-button:hover {
-    background-color: #0066cc;
+    background-color: #0093b2;
     transform: translateY(-2px);
 }
 

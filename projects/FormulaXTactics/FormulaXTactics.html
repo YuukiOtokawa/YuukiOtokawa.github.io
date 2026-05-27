@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FormulaXTactics</title>
+    <link rel="stylesheet" href="FormulaXTactics.css">
+</head>
+
+<body>
+    <header>
+        <div class="project-title">
+            <h1>FormulaXTactics</h1>
+        </div>
+    </header>
+
+    <nav class="thumbnail">
+        <img src="../../assets/ThisIsPicture.png" alt="ゲームプレイのイメージ画像">
+    </nav>
+
+    <nav class="table-of-contents">
+        <h2>目次</h2>
+        <ul>
+            <li><a href="#overview">概要</a></li>
+            <li><a href="#period">製作期間</a></li>
+            <li><a href="#technology">使用技術</a></li>
+            <li><a href="#features">特徴</a></li>
+            <li><a href="#systems">各種ゲームシステム紹介</a></li>
+            <li><a href="#future">今後の展望・実装したい機能</a></li>
+            <li><a href="#github">GitHubリポジトリ</a></li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <h2 id="overview">概要</h2>
+        <div class="auto-p">
+            「FormulaXTactics」は、専門学校3年の制作演習においてチームで開発した、近未来的なデジタルカードゲーム（ターン制タクティカルカードバトル）です。
+
+            数式や化学式、物理法則といった科学的要素（Formula）をカードの効果に組み込み、プレイヤー同士が知略を競うゲームシステムとなっています。
+
+            私はプログラムリーダーとして、ゲームの基礎フレームワークの設計と、デッキ構築システム、ネットワーク同期処理（ローカル対戦ロジックの整理）などを担当しました。
+
+            Unityの強力なUIシステムとC#によるロジック記述を活かし、カードの直感的なドラッグ操作やダイナミックな演出を実現しています。
+        </div>
+    </div>
+    <div class="content">
+        <h2 id="period">製作期間</h2>
+        <div class="auto-p">
+            約4か月 (3年生の制作演習)
+        </div>
+    </div>
+    <div class="content">
+        <h2 id="technology">使用技術</h2>
+        <div class="auto-p">
+            ゲームエンジン: Unity 2022.3 LTS
+
+            使用言語: C#
+
+            グラフィック・エフェクト: Shader Graph, Universal Render Pipeline (URP)
+
+            バージョン管理: Git / GitHub
+        </div>
+    </div>
+    <div class="content">
+        <h2 id="features">特徴</h2>
+        <li>Unityによる洗練されたカードインタラクション</li>
+        <div class="auto-p">
+            マウスやタッチによるカードのドラッグ＆ドロップ、手札の自動整列、スムーズなホバー演出を独自にコンポーネント化。
+
+            物理的なカードを触っているかのような手触り感を追求しました。
+        </div>
+        <li>柔軟な効果設計を可能にするノード・バフ設計</li>
+        <div class="auto-p">
+            「攻撃力増加」「ターンごとのダメージ」「特定の条件下で発動」といった多様なカード効果を、C#のインターフェースとクラス継承を駆使してモジュール化。
+
+            新カードの追加をパラメータ指定だけで容易に行えるようにしました。
+        </div>
+        <li>タスク管理とリーダーシップ</li>
+        <div class="auto-p">
+            GitHub Projectsを活用してプログラムタスクを細分化し、週次ミーティングを重ねることで開発スピードを維持。
+
+            ゲームバランスのテストプレイを頻繁に行い、完成度の向上に努めました。
+        </div>
+    </div>
+    <div class="content">
+        <h2 id="systems">各種ゲームシステム紹介</h2>
+        <li>デッキビルディングシステム</li>
+        <div class="auto-p">
+            何百種類ものカードの中から上限枚数でデッキを構成し、JSON形式でローカルデータに出出力・保存するシステムを設計。
+
+            UnityのUIシステム（ScrollRect）を高度にカスタマイズし、サクサクと検索・編成できる画面を作成しました。
+        </div>
+        <li>ターンマネージャーとフェーズ遷移</li>
+        <div class="auto-p">
+            「ドロー」「メイン」「バトル」「エンド」といった各フェーズの遷移を、状態マシン（Finite State Machine）パターンで完璧に整理。
+
+            割り込み効果やチェーン処理など、カードゲーム特有の複雑なイベント順序をバグなく制御しました。
+        </div>
+        <li>シェーダーグラフによる未来エフェクト</li>
+        <div class="auto-p">
+            UnityのShader Graphを活用し、カードがホログラムのようにノイズを走らせて出現するエフェクトや、攻撃時のデジタルグリッド波などを実装。
+
+            グラフィックのクオリティを最大限に引き上げました。
+        </div>
+    </div>
+    <div class="content">
+        <h2 id="future">今後の展望・実装したい機能</h2>
+        <li>オンラインマルチプレイの実装（PUN2 or Mirrorによる通信同期）</li>
+        <li>AI対戦用CPUの意思決定（モンテカルロ木探索アルゴリズムの適用）</li>
+        <li>演出のさらなるリッチ化（カードの3Dホログラム召喚演出）</li>
+    </div>
+    <div class="content">
+        <h2 id="github">GitHubリポジトリ</h2>
+        <a href="https://github.com/YuukiOtokawa/FormulaXTactics">
+            <div class="repoLink">FormulaXTactics (リポジトリリンク)</div>
+        </a>
+    </div>
+
+    <a href="../../index.html" class="back-button">ホームに戻る</a>
+
+    <script src="FormulaXTactics.js"></script>
+</body>
+
+</html>
