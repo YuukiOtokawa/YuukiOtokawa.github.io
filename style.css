@@ -1,17 +1,17 @@
 :root {
-    /* color */
-    --colorCharacter: #000000;
-    --colorSubText: #8b949e;
-    --colorHeaderBackground: linear-gradient(135deg, #1f6feb 0%, #8957e5 100%);
-    --colorPageBackground: #dddddd;
-    --colorCardBackground: #c5c5c5;
-    --colorCardBorder: #30363d;
-    --colorHoveredCardBorder: #1f6feb;
-    --colorButtonBackground: #30363d;
-    --colorButtonHoverBackground: #1a5bcb;
-    --imageBorderColor: #1f6feb;
+    /* 配色システム - 深みのある宇宙的ダークテーマ ＆ 鮮烈なサイバーブルー */
+    --colorCharacter: #f1f5f9; /* ほぼ純白のグレー */
+    --colorSubText: #94a3b8; /* やや明るいスレートグレー */
+    --colorHeaderBackground: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%);
+    --colorPageBackground: #080c14; /* 深宇宙のような漆黒に近いブルーブラック */
+    --colorCardBackground: rgba(15, 23, 42, 0.7); /* 半透明ダークブルーグレー */
+    --colorCardBorder: rgba(255, 255, 255, 0.08); /* 非常に繊細な白ボーダー */
+    --colorHoveredCardBorder: #38bdf8; /* 鮮やかなネオンライトブルー */
+    --colorButtonBackground: rgba(30, 41, 59, 0.8);
+    --colorButtonHoverBackground: #0284c7;
+    --imageBorderColor: #38bdf8;
 
-    /* size */
+    /* サイズ */
     --cardWidth: 350px;
     --cardWidthMobile: 280px;
     --profileMaxWidth: 1200px;
@@ -21,27 +21,26 @@
     --profileTextWidth: 600px;
 
     --cardBorderWidth: 1px;
-    --imageBorderWidth: 4px;
-    --cardBorderRadius: 12px;
+    --imageBorderWidth: 3px;
+    --cardBorderRadius: 16px; /* 角丸を少し広げてよりモダンに */
 
-
-    /* spacing */
+    /* スペーシング */
     --pagePadding: 20px;
-    --headerPadding: 60px 20px;
-    --titlePadding: 180px;
-    --contentPadding: 60px;
-    --cardPadding: 20px;
+    --headerPadding: 80px 20px;
+    --titlePadding: 100px; /* 適切な高さに微調整 */
+    --contentPadding: 80px;
+    --cardPadding: 24px;
     --cardGap: 30px;
 
     --listPadding: 12px 0;
     --listTextPadding: 20px;
 
-    /* font */
-    --fontFamily: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    /* フォント */
+    --fontFamily: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     --fontSizeText: 1rem;
-    --fontSizeTitle: 2rem;
+    --fontSizeTitle: 2.2rem;
     --fontSizeSubtitle: 1.5rem;
-    --fontSizeHeader: 3rem;
+    --fontSizeHeader: 3.5rem;
     --fontSizeSubText: 0.9rem;
 }
 
@@ -56,6 +55,8 @@ body {
     background: var(--colorPageBackground);
     color: var(--colorCharacter);
     padding: 0 var(--pagePadding);
+    line-height: 1.6;
+    overflow-x: hidden;
 }
 
 header {
@@ -65,26 +66,61 @@ header {
     margin-bottom: var(--titlePadding);
     margin-left: calc(-1 * var(--pagePadding));
     margin-right: calc(-1 * var(--pagePadding));
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    position: relative;
 }
 
-h1 {
+/* ヘッダーにサイバー風のバックグラウンド装飾を加える */
+header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #38bdf8, #818cf8, #38bdf8);
+    box-shadow: 0 0 12px rgba(56, 189, 248, 0.5);
+}
+
+header h1 {
     font-size: var(--fontSizeHeader);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    background: linear-gradient(135deg, #f8fafc 30%, #94a3b8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 10px;
+}
+
+header .subtitle {
+    color: var(--colorSubText);
+    font-size: 1.2rem;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
 }
 
 h2 {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     font-size: var(--fontSizeTitle);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    background: linear-gradient(90deg, #ffffff, #94a3b8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 h3 {
     text-align: left;
     margin-bottom: 20px;
     font-size: var(--fontSizeSubtitle);
+    font-weight: 600;
+    color: #e2e8f0;
 }
 
-/* .title-about-me { removed } */
-
+/* About Me セクションのガラスモーフィズム */
 .about-me {
     max-width: var(--profileMaxWidth);
     margin: var(--contentPadding) auto;
@@ -92,12 +128,27 @@ h3 {
     border: var(--cardBorderWidth) solid var(--colorCardBorder);
     border-radius: var(--cardBorderRadius);
     background: var(--colorCardBackground);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
 
+.about-me::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.03) 0%, transparent 70%);
+    pointer-events: none;
 }
 
 .about-me-content {
     display: flex;
-    gap: var(--cardGap);
+    gap: 40px;
     align-items: flex-start;
 }
 
@@ -105,42 +156,78 @@ h3 {
     flex: 0 0 var(--profileImageWidth);
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 20px;
 }
 
 .profile-image img {
     width: 100%;
     height: auto;
-    border-radius: var(--cardBorderRadius);
+    border-radius: 12px;
     border: var(--imageBorderWidth) solid var(--imageBorderColor);
-    box-shadow: 0 8px 30px rgba(31, 111, 235, 0.3);
+    box-shadow: 0 0 25px rgba(56, 189, 248, 0.25);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-image img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 35px rgba(56, 189, 248, 0.4);
 }
 
 .profile-text {
     text-align: left;
     font-size: var(--fontSizeText);
-    line-height: 1.6;
+    line-height: 1.8;
+}
+
+.profile-text h3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    background: linear-gradient(90deg, #ffffff, #38bdf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 12px;
+}
+
+.profile-text p {
+    color: #cbd5e1;
+    margin-bottom: 6px;
 }
 
 .skills {
     flex: 1;
-    padding: var(--cardPadding);
+    padding: 0 var(--cardPadding);
     text-align: left;
+}
+
+.skills h2 {
+    text-align: left;
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 10px;
+}
+
+.skill-category {
+    margin-bottom: 35px;
+}
+
+.skill-category h3 {
+    font-size: 1.2rem;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 6px;
+    margin-bottom: 18px;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 .skills ul {
-    list-style: disc;
-    text-align: left;
-    max-width: var(--profileTextWidth);
-    margin: 0 auto;
+    list-style: none;
+    padding-left: 0;
 }
 
 .skills ul li {
-    margin: var(--listPadding);
-    padding-left: var(--listTextPadding);
-    position: relative;
-    list-style: none;
-    /* Remove default list style */
+    margin: 15px 0;
 }
 
 .skill-item {
@@ -154,71 +241,65 @@ h3 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-weight: bold;
+    font-size: var(--fontSizeSubText);
+    font-weight: 600;
+    color: #e2e8f0;
 }
 
+.skill-score {
+    color: #38bdf8;
+    font-family: 'Outfit', sans-serif;
+}
+
+/* スキルグラフをモダンに */
 .skill-graph {
     display: flex;
-    gap: 4px;
-    height: 12px;
+    gap: 5px;
+    height: 10px;
     width: 100%;
 }
 
 .skill-block {
     flex: 1;
-    background-color: #ddd;
-    /* Inactive color */
-    border-radius: 2px;
-    transition: background-color 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.08);
+    border-radius: 3px;
+    transition: background-color 0.5s ease;
 }
 
 .skill-graph .filled {
-    background: var(--colorHeaderBackground);
-    /* Active gradient or color */
+    background: linear-gradient(90deg, #38bdf8, #818cf8);
+    box-shadow: 0 0 8px rgba(56, 189, 248, 0.4);
 }
 
-/* ... existing styles ... */
-
-.skill-graph .filled {
-    background: var(--colorHeaderBackground);
-    /* Active gradient or color */
+.skill-simple-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
-/* Optional: Make the active blocks glow slightly */
-.skill-graph .filled {
-    box-shadow: 0 0 4px rgba(31, 111, 235, 0.4);
+.skill-list-item {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: var(--fontSizeSubText);
+    color: #cbd5e1;
+    transition: all 0.3s ease;
 }
 
-.skill-category {
-    margin-bottom: 30px;
+.skill-list-item:hover {
+    background: rgba(56, 189, 248, 0.1);
+    border-color: rgba(56, 189, 248, 0.3);
+    color: #38bdf8;
+    transform: translateY(-2px);
 }
 
-.skill-category h3 {
-    margin-left: 20px;
-    /* Align with list items generally */
-    border-bottom: 2px solid #ddd;
-    padding-bottom: 5px;
-    margin-bottom: 15px;
-}
-
-@media (max-width: 768px) {
-    .about-me-content {
-        flex-direction: column;
-    }
-
-    .profile-image {
-        flex: 0 0 auto;
-        width: var(--profileImageWidthMobile);
-        margin: 0 auto;
-    }
-}
-
+/* カルーセル */
 .projects {
     padding-bottom: var(--titlePadding);
     overflow: hidden;
 }
 
-/* カルーセル全体 */
 .carousel-wrapper {
     position: relative;
     display: flex;
@@ -235,142 +316,162 @@ h3 {
     padding: var(--contentPadding) 0;
 }
 
+/* 左右端にフェードアウトする暗いオーバーレイを追加 */
+.carousel-container::before,
+.carousel-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 150px;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.carousel-container::before {
+    left: 0;
+    background: linear-gradient(to right, #080c14 0%, transparent 100%);
+}
+
+.carousel-container::after {
+    right: 0;
+    background: linear-gradient(to left, #080c14 0%, transparent 100%);
+}
+
 .carousel {
     display: flex;
     gap: var(--cardGap);
-    transition: transform 0.6s ease;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); /* より滑らかな遷移 */
     justify-content: flex-start;
-    /* 追加 */
 }
 
-/* 矢印ボタン */
+/* 丸型で半透明のプレミアムなカルーセルボタン */
 .carousel-btn {
-    background: gray;
-    border: none;
-    width: 50px;
-    height: 50px;
-    border-radius: 12px;
+    background: rgba(30, 41, 59, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: all 0.3s;
-    color: white;
+    transition: all 0.3s ease;
+    color: #cbd5e1;
     flex-shrink: 0;
     z-index: 10;
 }
 
 .carousel-btn:hover {
-    background: #1a5bcb;
-    transform: scale(1.1);
+    background: #0284c7;
+    border-color: #38bdf8;
+    color: white;
+    transform: scale(1.08);
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
 }
 
 .carousel-btn:active {
     transform: scale(0.95);
 }
 
-/* プロジェクトカード */
+/* プロジェクトカードのプレミアムガラスモーフィズム */
+.project-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    flex-shrink: 0;
+    transition: none;
+}
+
 .project-card {
-    width: 350px;
-    height: 300px;
+    width: var(--cardWidth);
+    height: 320px;
     background-color: var(--colorCardBackground);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    border: 1px solid var(--colorCardBorder);
+    /* 最初から透過のborderを置いてカクつきを防ぐ */
+    border: var(--cardBorderWidth) solid var(--colorCardBorder);
     border-radius: var(--cardBorderRadius);
     padding: 0;
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
     flex-shrink: 0;
     position: relative;
     overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 .project-card-content {
     padding: var(--cardPadding);
-    background: rgba(48, 48, 48, 0.65);
-    min-height: 100%;
-    color: #ffffff;
-    border-radius: var(--cardBorderRadius);
+    background: linear-gradient(to top, rgba(8, 12, 20, 0.95) 0%, rgba(8, 12, 20, 0.6) 80%, rgba(8, 12, 20, 0.3) 100%);
+    box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.6); /* カードの四辺（端）を暗くして引き締める */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
 }
 
+/* ホバーエフェクトのアップグレード（ガタつきバグ解消！） */
 .project-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 30px rgba(31, 111, 235, 0.3);
-    border: 3px solid var(--colorHoveredCardBorder);
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(56, 189, 248, 0.25);
+    border-color: var(--colorHoveredCardBorder);
 }
-
 
 .project-card h3 {
-    font-size: 1.5em;
-    margin-bottom: 10px;
-    color: var(--colorTitle);
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    letter-spacing: -0.01em;
 }
 
-.project-card p {
-    margin-bottom: 10px;
+.project-detail {
+    font-size: 0.95rem;
+    color: #cbd5e1;
+    line-height: 1.5;
+    margin-bottom: 16px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
 }
 
-.project-card ul {
-    list-style: none;
-    margin: 15px 0;
+/* 丸みを帯びたお洒落なタグ（バッジ） */
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: auto;
 }
 
-.project-card ul li {
-    margin: 5px 0;
+.tag {
+    background: rgba(56, 189, 248, 0.12);
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    color: #38bdf8;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    backdrop-filter: blur(4px);
+    transition: all 0.2s ease;
 }
 
-.project-card ul li:before {
-    content: "♪ ";
-    color: #1f6feb;
-    font-weight: bold;
+.project-card:hover .tag {
+    background: rgba(56, 189, 248, 0.2);
+    border-color: rgba(56, 189, 248, 0.4);
 }
 
-.project-card-link {
-    text-decoration: none;
-    /* 下線を消す */
-    color: inherit;
-    /* 親要素の色を継承（青色にならない） */
-    display: block;
-    flex-shrink: 0;
-}
-
-.project-card-link:hover {
-    text-decoration: none;
-    /* ホバー時も下線を消す */
-}
-
-/* さらに確実にするなら */
-.project-card-link * {
-    text-decoration: none;
-    /* すべての子要素の下線を消す */
-}
-
-.tech {
-    color: var(--colorSubText);
-    font-size: var(--fontSizeSubText);
-    margin: 15px 0;
-}
-
-.btn {
-    display: inline-block;
-    padding: 10px 20px;
-    background: var(--colorButtonBackground);
-    color: white;
-    text-decoration: none;
-    border-radius: 6px;
-    transition: background 0.3s;
-}
-
-.btn:hover {
-    background: var(--colorButtonHoverBackground);
-}
-
+/* フッター */
 footer {
     text-align: center;
-    padding: 40px 20px;
-    background: #161b22;
-    border-top: 1px solid #30363d;
+    padding: 60px 20px;
+    background: #06090f;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
     margin-left: calc(-1 * var(--pagePadding));
     margin-right: calc(-1 * var(--pagePadding));
 }
@@ -378,16 +479,44 @@ footer {
 footer p {
     color: var(--colorSubText);
     font-size: var(--fontSizeSubText);
+    letter-spacing: 0.03em;
 }
 
 /* レスポンシブ */
+@media (max-width: 1024px) {
+    .about-me-content {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+    
+    .skills {
+        padding: 0;
+        width: 100%;
+    }
+    
+    .skills h2 {
+        text-align: center;
+    }
+}
+
 @media (max-width: 768px) {
+    :root {
+        --fontSizeHeader: 2.5rem;
+        --fontSizeTitle: 1.8rem;
+    }
+
     .project-card {
-        min-width: 280px;
+        width: var(--cardWidthMobile);
+        height: 300px;
     }
 
     header h1 {
-        font-size: 2em;
+        font-size: 2.2rem;
+    }
+
+    header .subtitle {
+        font-size: 0.95rem;
     }
 
     .carousel-wrapper {
@@ -398,16 +527,30 @@ footer p {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
-        width: 40px;
-        height: 40px;
-        background: rgba(31, 111, 235, 0.9);
+        width: 44px;
+        height: 44px;
+        background: rgba(30, 41, 59, 0.85);
+        border-color: rgba(255, 255, 255, 0.15);
     }
 
     .carousel-btn.prev {
-        left: 10px;
+        left: 5px;
     }
 
     .carousel-btn.next {
-        right: 10px;
+        right: 5px;
+    }
+    
+    .profile-image {
+        width: var(--profileImageWidthMobile);
+        margin: 0 auto;
+    }
+    
+    .profile-text {
+        text-align: center;
+    }
+    
+    .profile-text h3 {
+        text-align: center;
     }
 }

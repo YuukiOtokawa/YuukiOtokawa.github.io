@@ -16,10 +16,10 @@ function createProjectCard(project) {
         <div class="project-card" style="background-image: url('${project.cardThumbnail}');">
             <div class="project-card-content">
                 <h3>${project.title}</h3>
-                <p>${project.detail}</p>
-                <ul>
-                    ${project.features.map(feature => `<li>${feature}</li>`).join('')}
-                </ul>
+                <p class="project-detail">${project.detail}</p>
+                <div class="project-tags">
+                    ${project.features.map(feature => `<span class="tag">${feature}</span>`).join('')}
+                </div>
             </div>
         </div>
     </a>
@@ -50,11 +50,6 @@ function initializeProfile() {
     if (profImg) {
         profImg.src = images.ProfileImage;
         profImg.alt = "Profile Image";
-    }
-
-    const headerTitle = document.querySelector('header p');
-    if (headerTitle) {
-        headerTitle.textContent = profile.name;
     }
 }
 
