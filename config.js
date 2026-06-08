@@ -18,9 +18,9 @@ const images = {
     ProfileImage: "assets/profile-image.jpg",
     OtokawaEngineCard: "assets/ProjectCard/EngineThumbnail.png",
     Project2Card: "assets/ProjectCard/DogThumbnail.png",
-    Project3Card: "assets/ThisIsPicture.png",
+    Project3Card: "assets/ProjectCard/Default_White.png",
     Project4Card: "assets/ProjectCard/HAKOPOSThumbnail.png",
-    Project5Card: "assets/ThisIsPicture.png",
+    Project5Card: "projects/YokaiTantei/Assets/YoukaiTitle.png",
 }
 
 const links = {
