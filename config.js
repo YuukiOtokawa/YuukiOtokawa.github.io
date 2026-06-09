@@ -48,6 +48,7 @@ const projectCardData = {
             detail: "DirectX11ベースのカスタムゲームエンジン",
             features: [
                 "ゲームエンジン",
+                "GitHub",
                 "プログラム",
                 "C++",
                 "DirectX11",
@@ -61,6 +62,7 @@ const projectCardData = {
             features: [
                 "チーム制作",
                 "進行管理",
+                "GitHub",
                 "プログラム",
                 "C++",
                 "DirectX11",
@@ -74,6 +76,7 @@ const projectCardData = {
             features: [
                 "チーム制作",
                 "進行管理",
+                "GitHub",
                 "Unity",
             ],
         },
@@ -84,7 +87,8 @@ const projectCardData = {
             detail: "2年にチームを組んで制作した落ちものパズルゲーム",
             features: [
                 "チーム制作",
-                "リポジトリ管理(GitHub)",
+                "リポジトリ管理",
+                "GitHub",
                 "Unity",
             ],
         },
@@ -96,7 +100,7 @@ const projectCardData = {
             features: [
                 "チーム制作",
                 "プログラム",
-                "リポジトリ管理(GitHub)",
+                "リポジトリ管理",
                 "Unity",
             ],
         },
