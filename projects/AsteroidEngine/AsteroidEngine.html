@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asteroid Engine | 音川優樹 Portfolio</title>
+    <meta name="description" content="OtokawaEngineの経験をもとに制作したDirectX12ベースのカスタムゲームエンジン「Asteroid Engine」の紹介ページ。">
+    <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Asteroid Engine | 音川優樹 Portfolio">
+    <meta property="og:description" content="OtokawaEngineの経験をもとに制作したDirectX12ベースのカスタムゲームエンジン「Asteroid Engine」の紹介ページ。">
+    <meta property="og:image" content="https://yuukiotokawa.github.io/assets/ProjectCard/Default_White.png">
+    <meta property="og:url" content="https://yuukiotokawa.github.io/projects/AsteroidEngine/AsteroidEngine.html">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../project-theme.css">
+    <link rel="stylesheet" href="AsteroidEngine.css">
+</head>
+
+<body>
+    <header>
+        <div class="project-title">
+            <h1>AsteroidEngine</h1>
+        </div>
+    </header>
+
+    <nav class="thumbnail">
+        <img src="assets/Thumbnail.png" alt="エンジン全体のスクリーンショット">
+    </nav>
+
+    <nav class="table-of-contents">
+        <h2>目次</h2>
+        <ul>
+            <li><a href="#overview">概要</a></li>
+            <li><a href="#period">製作期間</a></li>
+            <li><a href="#technology">使用技術</a></li>
+            <li><a href="#features">特徴</a></li>
+            <li><a href="#functions">各種機能紹介</a></li>
+            <li><a href="#media">動画・画像</a></li>
+            <li><a href="#future">今後の展望・実装したい機能</a></li>
+            <li><a href="#libraries">使用したライブラリと使用用途</a></li>
+            <li><a href="#github">GitHubリポジトリ</a></li>
+            <li><a href="#references">参考にしたもの</a></li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <h2 id="overview">概要</h2>
+        <div class="auto-p">
+            授業でDirectX12の学習が始まったタイミングに合わせ、OtokawaEngineの制作から得た経験を活かし、より良いエンジンを作り上げることを目指して制作を開始しました。
+
+            新しい技術や機能を取り入れながら、可読性は下げないことを目標にしています。
+        </div>
+    </div>
+    <div class="content">
+        <h2 id="period">製作期間</h2>
+        <div class="auto-p">
+            3か月
+
+            2026年4月 〜 現在進行中
+        </div>
+    </div>
+    <div class="content">
+        <h2 id="technology">使用技術</h2>
+        <div class="auto-p">
+            使用言語: C++(エンジン内部コード・スクリプト), HLSL(シェーダースクリプト)
+
+            グラフィックAPI: DirectX12
+        </div>
+    </div>
+    <div class="content">
+        <h2 id="features">特徴</h2>
+        <li>シェーダースクリプト</li>
+        <div class="auto-p">
+            MeshRendererにアタッチされたマテリアルに、インスペクターウィンドウからシェーダーを設定することで、その時点でのシェーダーコードをコンパイルし、マテリアルに反映させることができます。
+
+            また、定数バッファもシェーダーコード内で定義し、コメントでパラメータの形式を定義することで、インスペクターウィンドウ上でパラメータを編集することが可能です。
+        </div>
+        <li>メモリ管理の厳密化</li>
+        <div class="auto-p">
+            OtokawaEngineでは、new/deleteを使用してメモリを確保していたため、メモリリークの原因となっていました。
+
+            AsteroidEngineでは、std::unique_ptrやstd::shared_ptrを使用してメモリ管理を厳密化し、メモリリークの発生を防止しています。
+        </div>
+    </div>
+    <div class="content">
+        <h2 id="functions">各種機能紹介</h2>
+        <li>クラス設計</li>
+        <div class="auto-p">
+            Unityの設計思想に倣い、一元管理用の統合基底クラス「EngineMetaFile」を構築しました。
+
+            ゲームオブジェクト、各種コンポーネント、マテリアルなど、エンジンが扱うすべての主要なクラスはこの基底クラスを継承しており、ポリモーフィズムを用いた効率的なオブジェクト管理を実現しています。
+
+            ↓ EngineMetaFileを継承する一部クラスの継承イメージ
+        </div>
+        <img src="assets/ClassDiagram.png" alt="クラス図">
+        <li>オブジェクト管理</li>
+        <div class="auto-p">
+            エンジン内部にゲームオブジェクト、コンポーネント、マテリアル等のオブジェクトを一元管理するマネージャークラスを作成し、必要に応じてオブジェクトを生成・削除できるようにした。
+
+            EngineMetaFileクラスには一意のfileIDを持たせ、YAMLファイルに読み書きする際にはこの値でオブジェクトを識別する。
+
+            また、クラスごとに決まったclassIDを持たせ、YAMLファイルからオブジェクトを復元する際に使用する。
+        </div>
+        <img src="assets/ClassIDAndFileID.png" alt="クラスIDとファイルIDが定義されたコード">
+        <li>アセット管理</li>
+        <div class="auto-p">
+            テクスチャ、シェーダーはゲームオブジェクトと同様に一元管理し、読み込みの重複を防止
+
+            3Dモデルも対応予定
+
+            ゲームオブジェクトはPrefabとしてYAMLファイルに保存・読み込みが可能で、Prefab内で使用されているアセットも同時に管理される。
+
+            ↓ エンジンが操作するアセットリストのYAMLファイル。左の数字は他のオブジェクト等との連番になるFileID
+        </div>
+        <div class="image-row">
+            <img src="assets/AssetList.png" alt="アセットリスト">
+            <img src="assets/ObjectList.png" alt="オブジェクトリスト">
+        </div>
+
+        <li>サウンド機能</li>
+        <div class="auto-p">
+            XAudio2とMedia Foundationを使用してサウンド機能を実装
+
+            WAV, MP3, WMA形式の音声ファイルを読み込み、再生可能
+
+            ↓ Media Foundationで音声をWAVに変換してXAudio2で読み込むコード
+        </div>
+        <img src="assets/AudioLoader.png" alt="オーディオローダークラスのコード">
+        <li>ログ出力</li>
+        <div class="auto-p">
+            エンジンのGUIにログウィンドウを実装。ホットリロードなどのログが表示される。スクリプトからログを出力することも可能。
+
+            ↓ ホットリロードのログが流れてくるログ。
+        </div>
+        <img src="assets/ConsoleWindow.png" alt="コンソールウィンドウ">
+    </div>
+    <div class="content">
+        <h2 id="future">今後の展望・実装したい機能</h2>
+        <li>コードのクリーンアップおよび実行効率の最適化</li>
+        <li>堅牢性を向上させるための徹底した例外処理の導入</li>
+    </div>
+    <div class="content">
+        <h2 id="libraries">使用したライブラリと使用用途</h2>
+        <div class="reference">
+            <p>ImGui: エンジン内GUI <a href="https://github.com/ocornut/imgui">
+                    <div class="refLink">https://github.com/ocornut/imgui</div>
+                </a></p>
+        </div>
+        <div class="reference">
+            <p>Runtime Compiled C++: C++スクリプトの動的コンパイル <a
+                    href="https://github.com/RuntimeCompiledCplusplus/RuntimeCompiledCplusplus">
+                    <div class="refLink">https://github.com/RuntimeCompiledCplusplus/RuntimeCompiledCplusplus</div>
+                </a></p>
+        </div>
+        <div class="reference">
+            <p>DirectX Tex: 画像ファイル読み込み <a href="https://github.com/microsoft/DirectXTex">
+                    <div class="refLink">https://github.com/microsoft/DirectXTex</div>
+                </a></p>
+        </div>
+        <div class="reference">
+            <p>assimp: 3Dモデル(fbx)読み込み <a href="https://github.com/assimp/assimp">
+                    <div class="refLink">https://github.com/assimp/assimp</div>
+                </a></p>
+        </div>
+        <div class="reference">
+            <p>yaml-cpp: 各種データをYAMLファイルに入出力(シーン・Prefab) <a href="https://github.com/jbeder/yaml-cpp">
+                    <div class="refLink">https://github.com/jbeder/yaml-cpp</div>
+                </a></p>
+        </div>
+    </div>
+    <div class="content">
+        <h2 id="github">GitHubリポジトリ</h2>
+        <a href="https://github.com/YuukiOtokawa/Engine">
+            <div class="repoLink">OtokawaEngine</div>
+        </a>
+    </div>
+    <div class="content">
+        <h2 id="references">参考にしたもの</h2>
+        <div class="reference">
+            <p>UnityCsReference <a href="https://github.com/Unity-Technologies/UnityCsReference.git">
+                    <div class="refLink">https://github.com/Unity-Technologies/UnityCsReference.git</div>
+                </a></p>
+        </div>
+        <div class="reference">
+            <p>cpprefjp<a href="https://cpprefjp.github.io/index.html">
+                    <div class="refLink">https://cpprefjp.github.io/index.html</div>
+                </a></p>
+        </div>
+        <div class="reference">
+            <p>Unity スクリプトリファレンス<a href="https://docs.unity3d.com/ja/2019.3/ScriptReference/index.html">
+                    <div class="refLink">https://docs.unity3d.com/ja/2019.3/ScriptReference/index.html</div>
+                </a></p>
+        </div>
+    </div>
+
+    <a href="../../index.html" class="back-button">ホームに戻る</a>
+
+    <script src="AsteroidEngine.js"></script>
+</body>
+
+</html>
