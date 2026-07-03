@@ -17,6 +17,7 @@ const contentProperty = {
 const images = {
     ProfileImage: "assets/profile-image.jpg",
     OtokawaEngineCard: "assets/ProjectCard/EngineThumbnail.png",
+    AsteroidEngineCard: "assets/ProjectCard/Default_White.png",
     Project2Card: "assets/ProjectCard/DogThumbnail.png",
     Project3Card: "assets/ProjectCard/Default_White.png",
     Project4Card: "assets/ProjectCard/HAKOPOSThumbnail.png",
@@ -25,8 +26,7 @@ const images = {
 
 const links = {
     OtokawaEngineDetail: "projects/OtokawaEngine.html",
-    OtokawaEngineRepo: "",
-    GitHub: "",
+    GitHub: "https://github.com/YuukiOtokawa",
     Email: "yuukiotokawa.2002@gmail.com",
 
 }
@@ -52,6 +52,19 @@ const projectCardData = {
                 "プログラム",
                 "C++",
                 "DirectX11",
+            ],
+        },
+        {
+            title: "Asteroid Engine(仮)",
+            pageLink: "projects/AsteroidEngine/AsteroidEngine.html",
+            cardThumbnail: images.Project3Card,
+            detail: "OtokawaEngineの経験をもとに制作したDirectX12ベースのカスタムゲームエンジン",
+            features: [
+                "ゲームエンジン",
+                "GitHub",
+                "プログラム",
+                "C++",
+                "DirectX12",
             ],
         },
         {

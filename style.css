@@ -177,6 +177,7 @@ h3 {
     text-align: left;
     font-size: var(--fontSizeText);
     line-height: 1.8;
+	width: 270px;
 }
 
 .profile-text h3 {
@@ -287,12 +288,12 @@ h3 {
     transition: all 0.3s ease;
 }
 
-.skill-list-item:hover {
-    background: rgba(56, 189, 248, 0.1);
-    border-color: rgba(56, 189, 248, 0.3);
-    color: #38bdf8;
-    transform: translateY(-2px);
-}
+/*.skill-list-item:hover {*/
+/*    background: rgba(56, 189, 248, 0.1);*/
+/*    border-color: rgba(56, 189, 248, 0.3);*/
+/*    color: #38bdf8;*/
+/*    transform: translateY(-2px);*/
+/*}*/
 
 /* カルーセル */
 .projects {

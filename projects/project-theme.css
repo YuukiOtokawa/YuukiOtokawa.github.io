@@ -1,0 +1,284 @@
+/*
+  全プロジェクト詳細ページ共通のダークテーマ。
+  ホームページ(style.css)と視覚言語を統一しつつ、
+  --accentColor / --accentGlow だけを各プロジェクトのCSSで上書きして
+  プロジェクトごとの差し色を出す。
+*/
+:root {
+    --colorCharacter: #f1f5f9;
+    --colorSubText: #94a3b8;
+    --colorHeaderBackground: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%);
+    --colorPageBackground: #080c14;
+    --colorCardBackground: rgba(15, 23, 42, 0.7);
+    --colorCardBorder: rgba(255, 255, 255, 0.08);
+    --cardBorderRadius: 16px;
+
+    /* フォールバック値。各プロジェクトのCSSで上書きされる */
+    --accentColor: #38bdf8;
+    --accentGlow: rgba(56, 189, 248, 0.25);
+
+    --pagePadding: 20px;
+    --headerPadding: 60px 20px;
+    --headerMarginBottom: 100px;
+
+    --contentMargin: 0 auto 100px auto;
+    --cardMaxWidth: 800px;
+    --contentMaxWidth: 1000px;
+    --referenceMargin: 0 auto 50px auto;
+
+    --titleMarginBottom: 1.5em;
+    --textLineHeight: 1.8;
+
+    --fontFamily: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --fontSizeText: 1rem;
+    --fontSizeTitle: 2.2rem;
+    --fontSizeSubtitle: 1.5rem;
+    --fontSizeHeader: 3rem;
+    --fontSizeSubText: 0.9rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--fontFamily);
+    overflow-x: hidden;
+    width: 100%;
+    background: var(--colorPageBackground);
+    color: var(--colorCharacter);
+    line-height: 1.6;
+}
+
+header {
+    text-align: center;
+    padding: var(--headerPadding);
+    background: var(--colorHeaderBackground);
+    margin-bottom: var(--headerMarginBottom);
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, var(--accentColor), transparent);
+    box-shadow: 0 0 12px var(--accentGlow);
+}
+
+.project-title {
+    text-align: center;
+}
+
+h1 {
+    font-size: var(--fontSizeHeader);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    background: linear-gradient(90deg, #ffffff, var(--accentColor));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+h2 {
+    font-size: var(--fontSizeTitle);
+    font-weight: 700;
+    margin-block-end: var(--titleMarginBottom);
+    border-bottom: 2px solid var(--accentColor);
+    padding-bottom: 8px;
+    color: #e2e8f0;
+}
+
+h3 {
+    margin-top: 20px;
+    font-size: var(--fontSizeSubtitle);
+    font-weight: 700;
+    color: #e2e8f0;
+}
+
+p {
+    font-family: var(--fontFamily);
+    font-size: var(--fontSizeText);
+    line-height: var(--textLineHeight);
+    overflow-wrap: break-word;
+    color: #cbd5e1;
+}
+
+.auto-p {
+    margin-left: 20px;
+    overflow-wrap: break-word;
+    color: #cbd5e1;
+}
+
+.auto-p p {
+    margin-bottom: 1em;
+}
+
+li {
+    margin-top: 20px;
+    font-size: var(--fontSizeSubtitle);
+    font-weight: 600;
+    list-style-position: inside;
+    line-height: var(--textLineHeight);
+    color: #e2e8f0;
+}
+
+.thumbnail {
+    display: flex;
+    justify-content: center;
+    width: 70%;
+    margin: var(--contentMargin);
+}
+
+.thumbnail img {
+    width: 100%;
+    border-radius: var(--cardBorderRadius);
+    border: 1px solid var(--colorCardBorder);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 30px var(--accentGlow);
+}
+
+.content {
+    max-width: var(--contentMaxWidth);
+    margin: var(--contentMargin);
+}
+
+.content img {
+    max-width: 75%;
+    width: auto;
+    height: auto;
+    display: block;
+    margin: 20px 0;
+    border-radius: 12px;
+    border: 1px solid var(--colorCardBorder);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.reference {
+    margin: var(--referenceMargin);
+}
+
+.repoLink {
+    font-size: var(--fontSizeSubtitle);
+    color: var(--accentColor);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.repoLink:hover {
+    text-decoration: underline;
+}
+
+.refLink {
+    font-size: var(--fontSizeText);
+    word-break: break-all;
+    color: var(--colorSubText);
+}
+
+.table-of-contents {
+    max-width: var(--cardMaxWidth);
+    margin: var(--contentMargin);
+    padding: 24px 40px;
+    background: var(--colorCardBackground);
+    border: 1px solid var(--colorCardBorder);
+    border-radius: var(--cardBorderRadius);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+.table-of-contents h2 {
+    margin-block-end: 0.8em;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.table-of-contents ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.table-of-contents li {
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    font-size: var(--fontSizeText);
+    font-weight: 400;
+    color: var(--colorSubText);
+}
+
+.table-of-contents a {
+    color: var(--colorSubText);
+    text-decoration: none;
+    font-size: var(--fontSizeText);
+    transition: color 0.2s;
+}
+
+.table-of-contents a:hover {
+    color: var(--accentColor);
+    text-decoration: underline;
+}
+
+.back-button {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    padding: 14px 24px;
+    background: rgba(30, 41, 59, 0.8);
+    border: 1px solid var(--accentColor);
+    color: var(--colorCharacter);
+    text-decoration: none;
+    border-radius: 999px;
+    font-size: var(--fontSizeText);
+    font-family: var(--fontFamily);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 4px 20px var(--accentGlow);
+    transition: background-color 0.3s, color 0.3s, transform 0.2s;
+    z-index: 1000;
+}
+
+.back-button:hover {
+    background: var(--accentColor);
+    color: #080c14;
+    transform: translateY(-2px);
+}
+
+.image-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin: 20px 0;
+    align-items: flex-start;
+}
+
+.content .image-row img {
+    margin: 0;
+    max-width: 48%;
+    width: 48%;
+}
+
+@media (max-width: 768px) {
+    :root {
+        --fontSizeHeader: 2.2rem;
+        --fontSizeTitle: 1.6rem;
+    }
+
+    .thumbnail,
+    .content,
+    .table-of-contents {
+        width: 90%;
+        max-width: 90%;
+    }
+
+    .back-button {
+        padding: 10px 18px;
+        bottom: 16px;
+        right: 16px;
+    }
+}

@@ -5,6 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>音川 優樹 | Portfolio</title>
+    <meta name="description" content="音川優樹のポートフォリオ。ゲームシステム・エンジンプログラマー志望。DirectX11/12ベースの自作ゲームエンジンや、Unityでのチーム開発作品を掲載しています。">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="音川 優樹 | Portfolio">
+    <meta property="og:description" content="ゲームシステム・エンジンプログラマー志望のポートフォリオ。自作ゲームエンジンやチーム開発作品を掲載。">
+    <meta property="og:image" content="assets/profile-image.jpg">
+    <meta property="og:url" content="https://yuukiotokawa.github.io/">
+    <meta name="twitter:card" content="summary">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -14,12 +24,35 @@
 <body>
     <header>
         <h1>音川 優樹</h1>
-        <p class="subtitle">Game Systems & Engine Engineer Portfolio</p>
+        <p class="subtitle">Game Systems & Engine Programmer Portfolio</p>
     </header>
-    <section class="projects">
+	<div class="about-me">
+		<h2>About Me</h2>
+		<div class="about-me-content">
+			<div class="profile-image">
+				<img src="assets/profile-image.jpg" alt="音川優樹">
+				<div class="profile-text">
+					<h3>音川 優樹</h3>
+					<p>HAL東京 専門課程4年制</p>
+					<p>ゲーム4年制学科 ゲーム制作コース</p>
+					<p>2002年7月31日生</p>
+					<p>ゲームシステムからエンジンまで、プログラマーとして幅広く志望しております！</p>
+				</div>
+			</div>
+
+			<section class="skills">
+				<h2>スキルセット</h2>
+				<div id="skill-container">
+					<!-- JavaScriptで動的に生成 -->
+				</div>
+			</section>
+		</div>
+	</div>
+
+	<section class="projects">
         <h2>Featured Projects</h2>
         <div class="carousel-wrapper">
-            <button class="carousel-btn prev" id="prevBtn">
+            <button class="carousel-btn prev" id="prevBtn" aria-label="前のプロジェクト">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round" />
@@ -32,7 +65,7 @@
                 </div>
             </div>
 
-            <button class="carousel-btn next" id="nextBtn">
+            <button class="carousel-btn next" id="nextBtn" aria-label="次のプロジェクト">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round" />
@@ -40,29 +73,6 @@
             </button>
         </div>
     </section>
-
-    <div class="about-me">
-        <h2>About Me</h2>
-        <div class="about-me-content">
-            <div class="profile-image">
-                <img src="assets/profile-image.jpg" alt="音川優樹">
-                <div class="profile-text">
-                    <h3>音川 優樹</h3>
-                    <p>HAL東京 専門課程4年制</p>
-                    <p>ゲーム4年制学科 ゲーム制作コース</p>
-                    <p>2002年7月31日生</p>
-                    <p>ゲームエンジンなど、開発環境エンジニア志望です！</p>
-                </div>
-            </div>
-
-            <section class="skills">
-                <h2>スキルセット</h2>
-                <div id="skill-container">
-                    <!-- JavaScriptで動的に生成 -->
-                </div>
-            </section>
-        </div>
-    </div>
 
     <footer>
         <p>📧 Email: yuukiotokawa.2002@gmail.com | GitHub: @YuukiOtokawa</p>

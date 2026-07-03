@@ -10,9 +10,9 @@ const nextBtn = document.getElementById('nextBtn');
 // #region createProjectCard
 
 // プロジェクトカードのHTMLを生成する関数
-function createProjectCard(project) {
+function createProjectCard(project, isDuplicate = false) {
     return `
-    <a href="${project.pageLink}" class="project-card-link">
+    <a href="${project.pageLink}" class="project-card-link"${isDuplicate ? ' aria-hidden="true" tabindex="-1"' : ''}>
         <div class="project-card" style="background-image: url('${project.cardThumbnail}');">
             <div class="project-card-content">
                 <h3>${project.title}</h3>
@@ -31,12 +31,12 @@ function initializeCarousel() {
 
     let cardsHTML = '';
 
-    // 前方複製
-    cardsHTML += projectCardData.projects.map(createProjectCard).join('');
+    // 前方複製（無限ループ用の見た目だけの複製なのでスクリーンリーダーからは隠す）
+    cardsHTML += projectCardData.projects.map(project => createProjectCard(project, true)).join('');
     // 本体
-    cardsHTML += projectCardData.projects.map(createProjectCard).join('');
+    cardsHTML += projectCardData.projects.map(project => createProjectCard(project, false)).join('');
     // 後方複製
-    cardsHTML += projectCardData.projects.map(createProjectCard).join('');
+    cardsHTML += projectCardData.projects.map(project => createProjectCard(project, true)).join('');
     carousel.innerHTML = cardsHTML;
 }
 
@@ -169,7 +169,11 @@ function setupCarouselAnimation() {
         }, 100);
     });
 
-    setTimeout(startAutoScroll, 1500);
+    // モーション低減を希望するユーザーには自動スクロールを行わない
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!prefersReducedMotion) {
+        setTimeout(startAutoScroll, 1500);
+    }
 }
 
 
@@ -201,21 +205,25 @@ const skillCategories = [
         type: "graph",
         items: [
             { name: "Unity", score: 8 },
-            { name: "Unreal Engine", score: 5 }
+            { name: "Unreal Engine", score: 7 }
         ]
     },
     {
         title: "フレームワーク・ライブラリ",
         type: "list",
         items: [
-            { name: "DirectX11, ImGui, Runtime Compiled C++" }
+            { name: "DirectX11" },
+			{ name: "ImGui" },
+			{ name: "Runtime Compiled C++" },
         ]
     },
     {
         title: "ツール",
         type: "list",
         items: [
-            { name: "Git, Visual Studio, Rider" },
+            { name: "Git" },
+			{ name: "Visual Studio" },
+			{ name: "Rider" },
         ]
     }
 ];
@@ -263,11 +271,26 @@ function renderSkills() {
 
 // #endregion
 
+// #region footerInitialize
+
+function initializeFooter() {
+    const footer = document.querySelector('footer p');
+    if (!footer) return;
+
+    footer.innerHTML = `
+        📧 Email: <a href="mailto:${links.Email}">${links.Email}</a>
+        | GitHub: <a href="${links.GitHub}" target="_blank" rel="noopener">@YuukiOtokawa</a>
+    `;
+}
+
+// #endregion
+
 document.addEventListener('DOMContentLoaded', () => {
     initializeProfile();
     initializeCarousel();
     setupCarouselAnimation();
     renderSkills();
+    initializeFooter();
 });
 
 
