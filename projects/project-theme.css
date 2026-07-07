@@ -160,6 +160,73 @@ li {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
+.content img,
+.thumbnail img {
+    cursor: zoom-in;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.content img:hover,
+.thumbnail img:hover {
+    transform: scale(1.015);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 0 24px var(--accentGlow);
+}
+
+/* 画像拡大表示用ライトボックス */
+.lightbox-overlay {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(3, 6, 12, 0.92);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+    z-index: 2000;
+}
+
+.lightbox-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.lightbox-overlay img {
+    max-width: 90vw;
+    max-height: 85vh;
+    border-radius: 12px;
+    border: 1px solid var(--colorCardBorder);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 40px var(--accentGlow);
+    cursor: zoom-out;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(30, 41, 59, 0.8);
+    border: 1px solid var(--colorCardBorder);
+    color: var(--colorCharacter);
+    font-size: 1.6rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.lightbox-close:hover {
+    background: var(--accentColor);
+    border-color: var(--accentColor);
+    color: #080c14;
+}
+
 .reference {
     margin: var(--referenceMargin);
 }
