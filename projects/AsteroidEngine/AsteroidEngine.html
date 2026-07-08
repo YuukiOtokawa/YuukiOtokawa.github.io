@@ -76,70 +76,44 @@
     </div>
     <div class="content">
         <h2 id="features">特徴</h2>
-        <li>シェーダースクリプト</li>
         <div class="auto-p">
-            MeshRendererにアタッチされたマテリアルに、インスペクターウィンドウからシェーダーを設定することで、その時点でのシェーダーコードをコンパイルし、マテリアルに反映させることができます。
-
-            また、定数バッファもシェーダーコード内で定義し、コメントでパラメータの形式を定義することで、インスペクターウィンドウ上でパラメータを編集することが可能です。
+            現在も開発中のエンジンのため、以下は「実装済みのもの」と「移行・改善の途中にあるもの」を分けて記載しています。
         </div>
-        <li>メモリ管理の厳密化</li>
+        <li>複合レンダリングパイプライン</li>
         <div class="auto-p">
-            OtokawaEngineでは、new/deleteを使用してメモリを確保していたため、メモリリークの原因となっていました。
+            Deferred・Forward・PostProcessを組み合わせたレンダリングパイプラインを構築しています。
 
-            AsteroidEngineでは、std::unique_ptrやstd::shared_ptrを使用してメモリ管理を厳密化し、メモリリークの発生を防止しています。
+            Color/Normal/Position/Material/Emission/LightedColor/PostProcess1のG-Bufferを介してDeferredライティングを解決した後、Forwardパスとポストプロセスを適用する構成です。
+        </div>
+        <li>シェーダーの動的読み込みとGUI編集</li>
+        <div class="auto-p">
+            D3DCompilerを用いたHLSLの動的読み込みに対応しており、マテリアルにアタッチしたシェーダーの定数バッファを、インスペクターウィンドウ上から実行時に編集できます。
+        </div>
+        <li>メモリ管理の見直し(移行中)</li>
+        <div class="auto-p">
+            OtokawaEngineではnew/deleteによる直接管理でメモリリークを起こしやすい設計になっていた反省から、AsteroidEngineではオブジェクトの所有権をstd::unique_ptrやstd::shared_ptrで表現する方針に転換しています。
+
+            ただし現状はまだ移行の途中で、一部の生成処理には生ポインタも残っており、リファクタリング項目として順次解消を進めています。
         </div>
     </div>
     <div class="content">
         <h2 id="functions">各種機能紹介</h2>
-        <li>クラス設計</li>
+        <li>ハンドル/IDによるオブジェクト管理</li>
         <div class="auto-p">
-            Unityの設計思想に倣い、一元管理用の統合基底クラス「EngineMetaFile」を構築しました。
+            すべてのオブジェクトの基底クラスObjectに、生成順のインデックスと世代(generation)を組み合わせたIDを持たせ、ObjectManagerで一元管理しています。
 
-            ゲームオブジェクト、各種コンポーネント、マテリアルなど、エンジンが扱うすべての主要なクラスはこの基底クラスを継承しており、ポリモーフィズムを用いた効率的なオブジェクト管理を実現しています。
-
-            ↓ EngineMetaFileを継承する一部クラスの継承イメージ
+            開発中、オブジェクト破棄後も古いハンドルが誤って有効と判定されてしまうバグ(世代比較の条件が反転していた)を発見・修正し、danglingハンドルを検出できる設計にしました。
         </div>
-        <img src="assets/ClassDiagram.png" alt="クラス図">
-        <li>オブジェクト管理</li>
+        <li>ImGuiベースのエディターUI</li>
         <div class="auto-p">
-            エンジン内部にゲームオブジェクト、コンポーネント、マテリアル等のオブジェクトを一元管理するマネージャークラスを作成し、必要に応じてオブジェクトを生成・削除できるようにした。
-
-            EngineMetaFileクラスには一意のfileIDを持たせ、YAMLファイルに読み書きする際にはこの値でオブジェクトを識別する。
-
-            また、クラスごとに決まったclassIDを持たせ、YAMLファイルからオブジェクトを復元する際に使用する。
+            Hierarchy・Inspector・GameView・SceneView・GraphicsDebugなど、用途ごとのウィンドウをドッキング可能な形で実装しています。
         </div>
-        <img src="assets/ClassIDAndFileID.png" alt="クラスIDとファイルIDが定義されたコード">
-        <li>アセット管理</li>
+        <li>保守性向上のための継続的なリファクタリング</li>
         <div class="auto-p">
-            テクスチャ、シェーダーはゲームオブジェクトと同様に一元管理し、読み込みの重複を防止
+            肥大化していたRenderManager(約1900行)を、デバイス初期化・ディスクリプタ管理・定数バッファリング・テクスチャ読み込み・レンダーターゲット生成など責務ごとに7クラスへ段階的に分割し、外部の呼び出し元は無改修のまま約1450行まで縮小しました。
 
-            3Dモデルも対応予定
-
-            ゲームオブジェクトはPrefabとしてYAMLファイルに保存・読み込みが可能で、Prefab内で使用されているアセットも同時に管理される。
-
-            ↓ エンジンが操作するアセットリストのYAMLファイル。左の数字は他のオブジェクト等との連番になるFileID
+            あわせて、混在していた変数命名規則をm_接頭辞に統一(35ファイル・261箇所)、化けていた文字コードを自作189ファイル分修正、不統一だった名前空間をEngineCore::Renderに統一(35ファイル・136箇所)するなど、保守性向上の取り組みも継続しています。
         </div>
-        <div class="image-row">
-            <img src="assets/AssetList.png" alt="アセットリスト">
-            <img src="assets/ObjectList.png" alt="オブジェクトリスト">
-        </div>
-
-        <li>サウンド機能</li>
-        <div class="auto-p">
-            XAudio2とMedia Foundationを使用してサウンド機能を実装
-
-            WAV, MP3, WMA形式の音声ファイルを読み込み、再生可能
-
-            ↓ Media Foundationで音声をWAVに変換してXAudio2で読み込むコード
-        </div>
-        <img src="assets/AudioLoader.png" alt="オーディオローダークラスのコード">
-        <li>ログ出力</li>
-        <div class="auto-p">
-            エンジンのGUIにログウィンドウを実装。ホットリロードなどのログが表示される。スクリプトからログを出力することも可能。
-
-            ↓ ホットリロードのログが流れてくるログ。
-        </div>
-        <img src="assets/ConsoleWindow.png" alt="コンソールウィンドウ">
     </div>
     <div class="content">
         <h2 id="media">動画・画像</h2>
@@ -149,8 +123,16 @@
     </div>
     <div class="content">
         <h2 id="future">今後の展望・実装したい機能</h2>
-        <li>コードのクリーンアップおよび実行効率の最適化</li>
-        <li>堅牢性を向上させるための徹底した例外処理の導入</li>
+        <li>リファクタリングの継続(雑な実装・命名不統一・神クラス化した箇所の整理)</li>
+        <li>シェーダーのテクスチャをエディターから設定できるようにする</li>
+        <li>assertに頼らないエラー処理(クラッシュさせず、エディタ動作中にエラー状態を表示して直せるようにする)</li>
+        <li>PositionBufferを深度バッファに切り替える</li>
+        <li>ギズモの実装(ImGuizmo)</li>
+        <li>シーン機能の本格実装(保存・読み込み、ゲーム内でのシーン切り替え)</li>
+        <li>デバッグ機能の拡充(システム情報の表示、処理時間の計測、ログ出力ウィンドウ)</li>
+        <li>快適な操作性の向上(ドラッグ&ドロップ、ファイルエクスプローラー)</li>
+        <li>デプロイ機能の実装</li>
+        <li>スクリプト機能(ホットリロード付き)の実装</li>
     </div>
     <div class="content">
         <h2 id="libraries">使用したライブラリと使用用途</h2>
@@ -160,23 +142,17 @@
                 </a></p>
         </div>
         <div class="reference">
-            <p>Runtime Compiled C++: C++スクリプトの動的コンパイル <a
-                    href="https://github.com/RuntimeCompiledCplusplus/RuntimeCompiledCplusplus">
-                    <div class="refLink">https://github.com/RuntimeCompiledCplusplus/RuntimeCompiledCplusplus</div>
-                </a></p>
-        </div>
-        <div class="reference">
             <p>DirectX Tex: 画像ファイル読み込み <a href="https://github.com/microsoft/DirectXTex">
                     <div class="refLink">https://github.com/microsoft/DirectXTex</div>
                 </a></p>
         </div>
         <div class="reference">
-            <p>assimp: 3Dモデル(fbx)読み込み <a href="https://github.com/assimp/assimp">
+            <p>assimp: 3Dモデル(fbx/obj)読み込み <a href="https://github.com/assimp/assimp">
                     <div class="refLink">https://github.com/assimp/assimp</div>
                 </a></p>
         </div>
         <div class="reference">
-            <p>yaml-cpp: 各種データをYAMLファイルに入出力(シーン・Prefab) <a href="https://github.com/jbeder/yaml-cpp">
+            <p>yaml-cpp: 設定ファイル(YAML)の入出力 <a href="https://github.com/jbeder/yaml-cpp">
                     <div class="refLink">https://github.com/jbeder/yaml-cpp</div>
                 </a></p>
         </div>
