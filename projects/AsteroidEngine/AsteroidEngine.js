@@ -1,7 +1,3 @@
-const images = {
-    GuizmoManipulating: "assets/ProjectPage/OtokawaEngine/GuizmoManipulating.gif",
-}
-
 // auto-p クラスがついた要素内のテキストを空行区切りで自動的に<p>タグでラップ
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.auto-p').forEach(el => {
