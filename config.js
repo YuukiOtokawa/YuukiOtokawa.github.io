@@ -15,7 +15,7 @@ const contentProperty = {
 }
 
 const images = {
-    ProfileImage: "assets/profile-image.jpg",
+    ProfileImage: "assets/profile-smile.jpg",
     OtokawaEngineCard: "assets/ProjectCard/EngineThumbnail.png",
     AsteroidEngineCard: "projects/AsteroidEngine/Assets/AsteroidEngine_Thumbnail.png",
     Project2Card: "assets/ProjectCard/DogThumbnail.png",
