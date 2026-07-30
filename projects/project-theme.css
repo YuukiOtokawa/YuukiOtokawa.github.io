@@ -22,7 +22,7 @@
     --headerMarginBottom: 100px;
 
     --contentMargin: 0 auto 100px auto;
-    --cardMaxWidth: 800px;
+    --cardMaxWidth: 600px;
     --contentMaxWidth: 1000px;
     --referenceMargin: 0 auto 50px auto;
 
@@ -133,7 +133,7 @@ li {
 .thumbnail {
     display: flex;
     justify-content: center;
-    width: 70%;
+    width: 30%;
     margin: var(--contentMargin);
 }
 
@@ -339,8 +339,8 @@ li {
     .thumbnail,
     .content,
     .table-of-contents {
-        width: 90%;
-        max-width: 90%;
+        width: 70%;
+        max-width: 70%;
     }
 
     .back-button {

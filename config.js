@@ -21,7 +21,7 @@ const images = {
     Project2Card: "assets/ProjectCard/DogThumbnail.png",
     TeamworkCard: "assets/ProjectCard/Default_White.png",
     Project5Card: "projects/YokaiTantei/Assets/YoukaiTitle.png",
-    KemariOnmyoujiCard: "assets/ProjectCard/Default_White.png",
+    KemariOnmyoujiCard: "assets/ProjectCard/KemariThumbnail.jpg",
 }
 
 const links = {
