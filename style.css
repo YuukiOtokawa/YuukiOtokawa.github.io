@@ -120,7 +120,60 @@ h3 {
     color: #e2e8f0;
 }
 
-/* About Me セクションのガラスモーフィズム */
+/* 自己紹介(キャッチフレーズ + 自己分析文) */
+.intro {
+    text-align: center;
+}
+
+.intro-content {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    text-align: left;
+}
+
+.profile-photo {
+    width: var(--profileImageWidth);
+    flex-shrink: 0;
+    height: auto;
+    border-radius: 12px;
+    border: var(--imageBorderWidth) solid var(--imageBorderColor);
+    box-shadow: 0 0 25px rgba(56, 189, 248, 0.25);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-photo:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 35px rgba(56, 189, 248, 0.4);
+}
+
+.catchphrase {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    background: linear-gradient(90deg, #ffffff, #38bdf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 50px;
+}
+
+.intro-statement {
+    text-align: left;
+}
+
+.intro-statement p {
+    font-size: 1.05rem;
+    line-height: 2;
+    color: #cbd5e1;
+    margin-bottom: 24px;
+}
+
+.intro-statement p:last-child {
+    margin-bottom: 0;
+}
+
+/* 自己紹介・About Me セクションのガラスモーフィズム */
+.intro,
 .about-me {
     max-width: var(--profileMaxWidth);
     margin: var(--contentPadding) auto;
@@ -135,6 +188,7 @@ h3 {
     overflow: hidden;
 }
 
+.intro::before,
 .about-me::before {
     content: '';
     position: absolute;
@@ -148,36 +202,15 @@ h3 {
 
 .about-me-content {
     display: flex;
-    gap: 40px;
     align-items: flex-start;
-}
-
-.profile-image {
-    flex: 0 0 var(--profileImageWidth);
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.profile-image img {
-    width: 100%;
-    height: auto;
-    border-radius: 12px;
-    border: var(--imageBorderWidth) solid var(--imageBorderColor);
-    box-shadow: 0 0 25px rgba(56, 189, 248, 0.25);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.profile-image img:hover {
-    transform: scale(1.02);
-    box-shadow: 0 0 35px rgba(56, 189, 248, 0.4);
+    gap: 40px;
 }
 
 .profile-text {
     text-align: left;
     font-size: var(--fontSizeText);
     line-height: 1.8;
-	width: 270px;
+    flex: 0 0 270px;
 }
 
 .profile-text h3 {
@@ -196,16 +229,45 @@ h3 {
 
 .skills {
     flex: 1;
-    padding: 0 var(--cardPadding);
+    min-width: 0;
     text-align: left;
 }
 
-.skills h2 {
+.skills-summary {
     text-align: left;
     margin-bottom: 25px;
     font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    background: linear-gradient(90deg, #ffffff, #94a3b8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     padding-bottom: 10px;
+    cursor: pointer;
+    list-style: none;
+}
+
+.skills-summary::-webkit-details-marker {
+    display: none;
+}
+
+.skills-summary::before {
+    content: '▶';
+    display: inline-block;
+    font-size: 0.9rem;
+    margin-right: 10px;
+    color: #38bdf8;
+    -webkit-text-fill-color: #38bdf8;
+    transition: transform 0.2s ease;
+}
+
+.skills-details[open] .skills-summary::before {
+    transform: rotate(90deg);
+}
+
+.skills-details[open] .skills-summary {
+    margin-bottom: 25px;
 }
 
 .skill-category {
@@ -295,85 +357,17 @@ h3 {
 /*    transform: translateY(-2px);*/
 /*}*/
 
-/* カルーセル */
+/* プロジェクトグリッド */
 .projects {
     padding-bottom: var(--titlePadding);
-    overflow: hidden;
 }
 
-.carousel-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
+.kanban-board {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: var(--cardGap);
     max-width: var(--containerMaxWidth);
     margin: 0 auto;
-}
-
-.carousel-container {
-    overflow: hidden;
-    flex: 1;
-    position: relative;
-    padding: var(--contentPadding) 0;
-}
-
-/* 左右端にフェードアウトする暗いオーバーレイを追加 */
-.carousel-container::before,
-.carousel-container::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 150px;
-    pointer-events: none;
-    z-index: 5;
-}
-
-.carousel-container::before {
-    left: 0;
-    background: linear-gradient(to right, #080c14 0%, transparent 100%);
-}
-
-.carousel-container::after {
-    right: 0;
-    background: linear-gradient(to left, #080c14 0%, transparent 100%);
-}
-
-.carousel {
-    display: flex;
-    gap: var(--cardGap);
-    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); /* より滑らかな遷移 */
-    justify-content: flex-start;
-}
-
-/* 丸型で半透明のプレミアムなカルーセルボタン */
-.carousel-btn {
-    background: rgba(30, 41, 59, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(8px);
-    width: 54px;
-    height: 54px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    color: #cbd5e1;
-    flex-shrink: 0;
-    z-index: 10;
-}
-
-.carousel-btn:hover {
-    background: #0284c7;
-    border-color: #38bdf8;
-    color: white;
-    transform: scale(1.08);
-    box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
-}
-
-.carousel-btn:active {
-    transform: scale(0.95);
 }
 
 /* プロジェクトカードのプレミアムガラスモーフィズム */
@@ -381,12 +375,11 @@ h3 {
     text-decoration: none;
     color: inherit;
     display: block;
-    flex-shrink: 0;
     transition: none;
 }
 
 .project-card {
-    width: var(--cardWidth);
+    width: 100%;
     height: 320px;
     background-color: var(--colorCardBackground);
     background-size: cover;
@@ -485,31 +478,47 @@ footer p {
 
 /* レスポンシブ */
 @media (max-width: 1024px) {
+    .intro-content {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
     .about-me-content {
         flex-direction: column;
         align-items: center;
         gap: 30px;
     }
-    
+
+    .profile-text {
+        flex: none;
+    }
+
     .skills {
-        padding: 0;
         width: 100%;
     }
-    
-    .skills h2 {
+
+    .skills-summary {
         text-align: center;
+    }
+
+    .kanban-board {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 
 @media (max-width: 768px) {
+    .kanban-board {
+        grid-template-columns: 1fr;
+    }
+
     :root {
         --fontSizeHeader: 2.5rem;
         --fontSizeTitle: 1.8rem;
     }
 
-    .project-card {
-        width: var(--cardWidthMobile);
-        height: 300px;
+    .catchphrase {
+        font-size: 1.5rem;
     }
 
     header h1 {
@@ -520,29 +529,7 @@ footer p {
         font-size: 0.95rem;
     }
 
-    .carousel-wrapper {
-        gap: 0;
-    }
-
-    .carousel-btn {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 44px;
-        height: 44px;
-        background: rgba(30, 41, 59, 0.85);
-        border-color: rgba(255, 255, 255, 0.15);
-    }
-
-    .carousel-btn.prev {
-        left: 5px;
-    }
-
-    .carousel-btn.next {
-        right: 5px;
-    }
-    
-    .profile-image {
+    .profile-photo {
         width: var(--profileImageWidthMobile);
         margin: 0 auto;
     }

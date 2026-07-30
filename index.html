@@ -26,51 +26,43 @@
         <h1>音川 優樹</h1>
         <p class="subtitle">Game Systems & Engine Programmer Portfolio</p>
     </header>
+	<section class="intro">
+		<p class="catchphrase">(ここにキャッチフレーズ)</p>
+		<div class="intro-content">
+			<img class="profile-photo" src="assets/profile-smile.jpg" alt="音川優樹">
+			<div class="intro-statement">
+				<p>個人でゲームエンジンを開発する際は、前作でつまずいた経験を次の設計に活かすことを大切にしています。前作を終了するたびに開発ツールがメモリリークを検出していたことを反省し、後継のエンジンでは「スマートポインタ」と呼ばれる、使われなくなったデータを仕組み側が自動的に片付けてくれる管理方法に設計から見直しました。</p>
+				<p>技術を学ぶときは「車輪の再発明」を大切にし、既存の技術も自分の手を動かして再現しながら理解を深めています。一方で、時間や難易度の都合で自力実装が難しいものは、既存のライブラリやフレームワークも仕組みを理解した上で活用します。</p>
+				<p>触ったことのない機能や複雑な処理にも、まずは手を動かして試してから考えるタイプです。うまくいかない日があっても、粘り強く向き合いながら少しずつ前に進めることを心がけています。</p>
+			</div>
+		</div>
+	</section>
+
 	<div class="about-me">
-		<h2>About Me</h2>
 		<div class="about-me-content">
-			<div class="profile-image">
-				<img src="assets/profile-smile.jpg" alt="音川優樹">
-				<div class="profile-text">
-					<h3>音川 優樹</h3>
-					<p>HAL東京 専門課程4年制</p>
-					<p>ゲーム4年制学科 ゲーム制作コース</p>
-					<p>2002年7月31日生</p>
-					<p>ゲームシステムからエンジンまで、プログラマーとして幅広く志望しております！</p>
-				</div>
+			<div class="profile-text">
+				<h3>音川 優樹</h3>
+				<p>HAL東京 専門課程4年制</p>
+				<p>ゲーム4年制学科 ゲーム制作コース</p>
+				<p>2002年7月31日生</p>
+				<p>ゲームシステムからエンジンまで、プログラマーとして幅広く志望しております！</p>
 			</div>
 
 			<section class="skills">
-				<h2>スキルセット</h2>
-				<div id="skill-container">
-					<!-- JavaScriptで動的に生成 -->
-				</div>
+				<details class="skills-details">
+					<summary class="skills-summary">スキルセット</summary>
+					<div id="skill-container">
+						<!-- JavaScriptで動的に生成 -->
+					</div>
+				</details>
 			</section>
 		</div>
 	</div>
 
 	<section class="projects">
         <h2>Featured Projects</h2>
-        <div class="carousel-wrapper">
-            <button class="carousel-btn prev" id="prevBtn" aria-label="前のプロジェクト">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" />
-                </svg>
-            </button>
-
-            <div class="carousel-container">
-                <div class="carousel">
-                    <!-- JavaScriptで動的に生成 -->
-                </div>
-            </div>
-
-            <button class="carousel-btn next" id="nextBtn" aria-label="次のプロジェクト">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" />
-                </svg>
-            </button>
+        <div class="kanban-board" id="kanban-board">
+            <!-- JavaScriptで動的に生成 -->
         </div>
     </section>
 

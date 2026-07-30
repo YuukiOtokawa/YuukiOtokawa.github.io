@@ -19,9 +19,9 @@ const images = {
     OtokawaEngineCard: "assets/ProjectCard/EngineThumbnail.png",
     AsteroidEngineCard: "projects/AsteroidEngine/Assets/AsteroidEngine_Thumbnail.png",
     Project2Card: "assets/ProjectCard/DogThumbnail.png",
-    Project3Card: "assets/ProjectCard/Default_White.png",
-    Project4Card: "assets/ProjectCard/HAKOPOSThumbnail.png",
+    TeamworkCard: "assets/ProjectCard/Default_White.png",
     Project5Card: "projects/YokaiTantei/Assets/YoukaiTitle.png",
+    KemariOnmyoujiCard: "assets/ProjectCard/Default_White.png",
 }
 
 const links = {
@@ -82,30 +82,6 @@ const projectCardData = {
             ],
         },
         {
-            title: "FormulaXTactics",
-            pageLink: "projects/FormulaXTactics/FormulaXTactics.html",
-            cardThumbnail: images.Project3Card,
-            detail: "3年の制作演習で制作したターン制カードゲーム",
-            features: [
-                "チーム制作",
-                "進行管理",
-                "GitHub",
-                "Unity",
-            ],
-        },
-        {
-            title: "ハコポス!!!",
-            pageLink: "projects/HAKOPOS/HAKOPOS.html",
-            cardThumbnail: images.Project4Card,
-            detail: "2年にチームを組んで制作した落ちものパズルゲーム",
-            features: [
-                "チーム制作",
-                "リポジトリ管理",
-                "GitHub",
-                "Unity",
-            ],
-        },
-        {
             title: "妖怪探偵",
             pageLink: "projects/YokaiTantei/YokaiTantei.html",
             cardThumbnail: images.Project5Card,
@@ -115,6 +91,28 @@ const projectCardData = {
                 "プログラム",
                 "リポジトリ管理",
                 "Unity",
+            ],
+        },
+        {
+            title: "蹴鞠陰陽師",
+            pageLink: "projects/KemariOnmyouji/KemariOnmyouji.html",
+            cardThumbnail: images.KemariOnmyoujiCard,
+            detail: "現在制作中のゲームプロジェクトです。詳細は準備中です。",
+            features: [
+                "プログラム",
+                "制作中",
+            ],
+        },
+        {
+            title: "チーム開発・進行管理",
+            pageLink: "projects/Teamwork/Teamwork.html",
+            cardThumbnail: images.TeamworkCard,
+            detail: "FormulaXTacticsとハコポス!!!で培った、仕様設計・進行管理・リポジトリ管理の経験",
+            features: [
+                "チーム制作",
+                "進行管理",
+                "リポジトリ管理",
+                "GitHub",
             ],
         },
 

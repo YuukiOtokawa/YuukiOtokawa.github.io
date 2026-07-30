@@ -1,18 +1,9 @@
-const carousel = document.querySelector('.carousel');
-const carouselContainer = document.querySelector('.carousel-container');
-const cards = document.querySelectorAll('.project-card');
-const prevBtn = document.getElementById('prevBtn');
-const nextBtn = document.getElementById('nextBtn');
-
-
-
-
 // #region createProjectCard
 
 // プロジェクトカードのHTMLを生成する関数
-function createProjectCard(project, isDuplicate = false) {
+function createProjectCard(project) {
     return `
-    <a href="${project.pageLink}" class="project-card-link"${isDuplicate ? ' aria-hidden="true" tabindex="-1"' : ''}>
+    <a href="${project.pageLink}" class="project-card-link">
         <div class="project-card" style="background-image: url('${project.cardThumbnail}');">
             <div class="project-card-content">
                 <h3>${project.title}</h3>
@@ -26,18 +17,16 @@ function createProjectCard(project, isDuplicate = false) {
     `;
 }
 
-// カルーセル初期化
-function initializeCarousel() {
+// #endregion
 
-    let cardsHTML = '';
+// #region projectGrid
 
-    // 前方複製（無限ループ用の見た目だけの複製なのでスクリーンリーダーからは隠す）
-    cardsHTML += projectCardData.projects.map(project => createProjectCard(project, true)).join('');
-    // 本体
-    cardsHTML += projectCardData.projects.map(project => createProjectCard(project, false)).join('');
-    // 後方複製
-    cardsHTML += projectCardData.projects.map(project => createProjectCard(project, true)).join('');
-    carousel.innerHTML = cardsHTML;
+// プログラム作品と、チーム開発・進行管理をまとめたページを3列グリッドで表示する
+function initializeProjectGrid() {
+    const board = document.getElementById('kanban-board');
+    if (!board) return;
+
+    board.innerHTML = projectCardData.projects.map(project => createProjectCard(project)).join('');
 }
 
 // #endregion
@@ -54,131 +43,6 @@ function initializeProfile() {
 }
 
 // #endregion
-
-// #region carouselAnimation
-
-function setupCarouselAnimation() {
-    const parameter = document.querySelector(':root');
-
-    const carousel = document.querySelector('.carousel');
-    const carouselContainer = document.querySelector('.carousel-container');
-    const cards = document.querySelectorAll('.project-card');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-
-    if (!carousel || cards.length === 0) return;
-
-    const realCards = projectCardData.projects.length; // 実際のカード数
-
-    // cardWidthを動的に取得する関数
-    function getCardWidth() {
-        const rootStyles = getComputedStyle(document.documentElement);
-        const cardGapValue = rootStyles.getPropertyValue('--cardGap').trim();
-        const cardGap = parseInt(cardGapValue);
-        return cards[0].offsetWidth + cardGap;
-    }
-
-    let currentIndex = realCards; // オリジナルの最初のカード（index=realCards）
-    let isAnimating = false;
-    let autoScrollInterval;
-
-    function moveToIndex(index, withAnimation = true) {
-        if (isAnimating && withAnimation) return;
-
-        isAnimating = true;
-
-        carousel.style.transition = withAnimation ? 'transform 0.6s ease' : 'none';
-        // 毎回最新の値を取得
-        const cardWidth = getCardWidth();
-        const containerWidth = carouselContainer.offsetWidth;
-        const cardActualWidth = cards[0].offsetWidth;
-        const offset = (containerWidth - cardActualWidth) / 2;
-        const translateX = -(index * cardWidth) + offset;
-        carousel.style.transform = `translateX(${translateX}px)`;
-
-        setTimeout(() => {
-            isAnimating = false;
-        }, withAnimation ? 600 : 50);
-    }
-
-    setTimeout(() => {
-        moveToIndex(currentIndex, false);
-    }, 100);
-
-    function goNext() {
-        if (isAnimating) return;
-
-        currentIndex++;
-        moveToIndex(currentIndex);
-
-        if (currentIndex > realCards * 2 - 1) {
-            setTimeout(() => {
-                currentIndex = realCards;
-                moveToIndex(currentIndex, false);
-            }, 650);
-        }
-    }
-
-    function goPrev() {
-        if (isAnimating) return;
-        currentIndex--;
-        moveToIndex(currentIndex);
-        if (currentIndex < realCards) {
-            setTimeout(() => {
-                currentIndex = realCards * 2 - 1;
-                moveToIndex(currentIndex, false);
-            }, 650);
-        }
-    }
-
-    function autoScroll() {
-        goNext();
-    }
-
-    function startAutoScroll() {
-        stopAutoScroll();
-        autoScrollInterval = setInterval(autoScroll, 3000);
-    }
-
-    function stopAutoScroll() {
-        if (autoScrollInterval) {
-            clearInterval(autoScrollInterval);
-        }
-    }
-
-    nextBtn.addEventListener('click', () => {
-        stopAutoScroll();
-        goNext();
-        startAutoScroll();
-    });
-
-    prevBtn.addEventListener('click', () => {
-        stopAutoScroll();
-        goPrev();
-        startAutoScroll();
-    });
-
-    carousel.addEventListener('mouseenter', stopAutoScroll);
-    carousel.addEventListener('mouseleave', startAutoScroll);
-
-    let resizeTimer;
-    window.addEventListener('resize', () => {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(() => {
-            moveToIndex(currentIndex, false);
-        }, 100);
-    });
-
-    // モーション低減を希望するユーザーには自動スクロールを行わない
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (!prefersReducedMotion) {
-        setTimeout(startAutoScroll, 1500);
-    }
-}
-
-
-
-// #region Skills Graph
 
 // #region Skills Graph
 
@@ -287,12 +151,7 @@ function initializeFooter() {
 
 document.addEventListener('DOMContentLoaded', () => {
     initializeProfile();
-    initializeCarousel();
-    setupCarouselAnimation();
+    initializeProjectGrid();
     renderSkills();
     initializeFooter();
 });
-
-
-
-// #endregion

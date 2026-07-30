@@ -1,0 +1,13 @@
+:root {
+    --accentColor: #f59e0b;
+    --accentGlow: rgba(245, 158, 11, 0.25);
+}
+
+.project-link {
+    margin: 24px 0 0 20px;
+}
+
+.project-link a {
+    color: var(--accentColor);
+    font-weight: 700;
+}
