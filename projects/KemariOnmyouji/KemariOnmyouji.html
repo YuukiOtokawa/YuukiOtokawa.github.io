@@ -28,7 +28,108 @@
         </div>
     </header>
 
-    <!-- プロジェクトのサムネイル、目次、紹介内容をここに追加する -->
+    <nav class="thumbnail">
+        <img src="assets/Thumbnail.png" alt="エンジン全体のスクリーンショット">
+    </nav>
+
+    <nav class="table-of-contents">
+        <h2>目次</h2>
+        <ul>
+            <li><a href="#overview">概要</a></li>
+            <li><a href="#period">製作期間</a></li>
+            <li><a href="#technology">使用技術</a></li>
+            <li><a href="#features">拘ったポイント</a></li>
+            <li><a href="#works">担当箇所</a></li>
+            <li><a href="#github">GitHubリポジトリ</a></li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <h2 id="overview">概要</h2>
+        <div class="auto-p">
+            学校の授業で行ったチーム制作で制作した作品です。
+
+            Unreal Engineを使用してアクションゲームを制作しました。
+
+            ボールを落とさずに敵にぶつけ続けて倒していくスタイリッシュアクションゲームです。
+
+            また、ぶつけずにリフティングすることでボールを落とさないようにすることができ、その回数によってキック一回で複数の敵に連続で当たるようになります。
+        </div>
+    </div>
+    <div class="content">
+        <h2 id="period">製作期間</h2>
+        <div class="auto-p">
+            3か月半
+
+            2026年4月 〜 2026年7月
+        </div>
+    </div>
+    <div class="content">
+        <h2 id="technology">使用技術</h2>
+        <div class="auto-p">
+            使用ゲームエンジン: Unreal Engine 5.4
+
+            使用言語: C++(スクリプト)
+
+            バージョン管理ツール: Diversion
+
+            Unreal Engineの大きなファイルを問題なく扱うため、Gitではなく容量の大きいDiversionを採用しました。
+        </div>
+    </div>
+    <div class="content">
+        <h2 id="features">拘ったポイント</h2>
+        <li>何度も試して改良を繰り返し、わかりやすさと気持ちよさを重視したゲーム設計</li>
+        <div class="auto-p">
+            初期段階ではランダムに落下点が設定されたボールを落ちる前に拾いに行く仕様になっていましたが、よりボールを落とさないことを重視し、自動で返ってくるボールをリフティングなどで地面に落ちないようにキープする仕様に変更しました。
+        </div>
+        <img src="assets/CompileLog.png" alt="スクリプトコンパイルで出力されるログの一部">
+        <li>キャラクターのアニメーションと位置補正</li>
+        <div class="auto-p">
+            キック時のボールとプレイヤーの位置関係によって、アニメーションを変更するとともにプレイヤーの位置をずらすことで自然な動きになるようにしています。
+        </div>
+        <img src="assets/CompileLog.png" alt="スクリプトコンパイルで出力されるログの一部">
+        <li>エネミーの設計</li>
+        <div class="auto-p">
+            Behavior TreeやAIControllerなど、エネミーの行動設計においてUnreal Engine特有の機能を存分に利用し、拡張性の高い設計を実現しています。
+        </div>
+        <img src="assets/CompileLog.png" alt="スクリプトコンパイルで出力されるログの一部">
+        <li>デバッグやレベルデザイン機能の集約</li>
+        <div class="auto-p">
+            レベルデザインがしやすいように、実際の配置を確認しながらエネミーの出現順などを設定できるようにエディタカスタマイズを行いました。
+
+            また、プレイヤーやエネミーなどが持つパラメータのうち、レベルデザインに関わるものを1つのアセットに集約し、このアセットに設定されたパラメータをそれぞれが参照するようにしました。これにより、微調整のために様々な画面を開く必要がなく、一つの画面で済むようになりました。
+
+            スコアなど、ゲーム内で参照されることが多い値について、管理クラスに参照しようとするとキャストなど複雑な操作を必要としていましたが、ブループリントの学習が進む中で1つのノードを呼び出すだけで参照や設定をすることができるようになりました。
+
+            デバッグについて、開発ビルドでのみキーボードショートカットから機能を呼び出し、プレイヤーを無敵にするなどのデバッグ専用機能を使用できるようにしています。デバッグログを使用してゲーム画面の隠れる範囲を最小限にしながらデバッグ情報を確認できるようにしています。
+        </div>
+        <img src="assets/CompileLog.png" alt="スクリプトコンパイルで出力されるログの一部">
+    </div>
+    <div class="content">
+        <h2 id="works">担当箇所</h2>
+        <li>ゲーム管理クラスの実装を行いました。</li>
+        <div class="auto-p">
+            タイトルからリザルト画面までのゲームループをはじめ、プレイ中のゲームの進行など、ゲーム管理に関わる全ての機能を実装しました。
+        </div>
+        <img src="assets/ClassDiagram.png" alt="クラス図">
+        <li>UIの実装を行いました。</li>
+        <div class="auto-p">
+            UI全般の実装を行いました。HPゲージなど常に画面に見えているものはもちろん、プレイヤーの足元に表示されているリングなど、3D空間上に表示されるようなUIも実装しています。
+        </div>
+        <img src="assets/ClassDiagram.png" alt="クラス図">
+        <li>デバッグ機能の実装を行いました。</li>
+        <div class="auto-p">
+            上記拘ったポイントのデバッグで触れているようなデバッグ機能の実装を行いました。
+        </div>
+        <img src="assets/ClassDiagram.png" alt="クラス図">
+    </div>
+    <div class="content">
+        <h2 id="github">GitHubリポジトリ</h2>
+        <a href="https://github.com/YuukiOtokawa/Engine">
+            <div class="repoLink">OtokawaEngine</div>
+        </a>
+    </div>
+
 
     <a href="../../index.html" class="back-button">ホームに戻る</a>
 
