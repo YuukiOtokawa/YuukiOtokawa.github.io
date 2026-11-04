@@ -150,7 +150,8 @@ li {
     margin: var(--contentMargin);
 }
 
-.content img {
+.content img,
+.content video {
     max-width: 75%;
     width: auto;
     height: auto;
