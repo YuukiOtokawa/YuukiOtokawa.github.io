@@ -27,3 +27,13 @@
   - [x] アドベンチャーゲームっぽいテキスト表示: テキスト表示・自動送り・ログ機能のGIF (`<!--GIFを貼る-->` / [83行目](file:///c:/Users/yuuki/Desktop/Portfolio/projects/YokaiTantei/YokaiTantei.html#L83))
   - [x] ゲーム内データの管理: イベントフラグ管理等のスクショ (`<!--スクショを貼る-->` / [88行目](file:///c:/Users/yuuki/Desktop/Portfolio/projects/YokaiTantei/YokaiTantei.html#L88))
 
+# KemariOnmyouji
+- [x] 内容完成
+- [ ] 画像の追加
+  - [ ] わかりやすさと気持ちよさを重視したゲーム設計: リフティングでボールをキープしている様子のGIF ([85行目](file:///c:/Users/yuuki/Desktop/Portfolio/projects/KemariOnmyouji/KemariOnmyouji.html#L85))
+  - [ ] キャラクターのアニメーションと位置補正: キック時のGIF ([90行目](file:///c:/Users/yuuki/Desktop/Portfolio/projects/KemariOnmyouji/KemariOnmyouji.html#L90))
+  - [ ] エネミーの設計: Behavior Treeのスクショ ([95行目](file:///c:/Users/yuuki/Desktop/Portfolio/projects/KemariOnmyouji/KemariOnmyouji.html#L95))
+  - [ ] デバッグやレベルデザイン機能の集約: エディタカスタマイズ・パラメータ集約アセットのスクショ ([106行目](file:///c:/Users/yuuki/Desktop/Portfolio/projects/KemariOnmyouji/KemariOnmyouji.html#L106))
+  - [ ] ゲーム管理クラスの実装: クラス図 ([114行目](file:///c:/Users/yuuki/Desktop/Portfolio/projects/KemariOnmyouji/KemariOnmyouji.html#L114))
+  - [ ] UIの実装: HPゲージ・足元のリングなどのスクショ ([119行目](file:///c:/Users/yuuki/Desktop/Portfolio/projects/KemariOnmyouji/KemariOnmyouji.html#L119))
+  - [ ] デバッグ機能の実装: デバッグ機能使用中のスクショ ([124行目](file:///c:/Users/yuuki/Desktop/Portfolio/projects/KemariOnmyouji/KemariOnmyouji.html#L124))
